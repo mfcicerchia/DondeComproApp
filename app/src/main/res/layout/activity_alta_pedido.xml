@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_alta_pedido"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="dondecompro.frsf.utn.dondecomproapp.PedidoActivity">
+
+    <Button
+        android:text="Aceptar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:id="@+id/btnAgregar"
+        android:layout_below="@+id/etNombrePedido"
+        android:layout_alignStart="@+id/etNombrePedido" />
+
+    <Button
+        android:text="Cancelar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnCancelar"
+        android:layout_alignBaseline="@+id/btnAgregar"
+        android:layout_alignBottom="@+id/btnAgregar"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:id="@+id/etNombrePedido"
+        android:hint="identificacion del pedido"
+        android:textStyle="normal|italic"
+        android:textAlignment="center"
+        android:layout_below="@+id/tvNombrePedido"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/tvNombrePedido" />
+
+    <TextView
+        android:text="Ingrese un nombre al nuevo pedido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="37dp"
+        android:id="@+id/tvNombrePedido"
+        android:textSize="18sp"
+        android:textColor="@android:color/darker_gray"
+        android:textAlignment="center"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+</RelativeLayout>
