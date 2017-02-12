@@ -39,7 +39,7 @@ public class PedidoActivity extends AppCompatActivity implements Button.OnClickL
             case R.id.btnCancelar:
                 Toast.makeText(getApplicationContext(), "Se canceló el nuevo pedido", Toast.LENGTH_LONG).show();
 
-                Intent i= new Intent(this,MainActivity.class);
+                Intent i= new Intent(this,MainOneActivity.class);
                 startActivity(i);
                 break;
         }

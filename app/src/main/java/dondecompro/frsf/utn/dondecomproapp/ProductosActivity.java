@@ -1,5 +1,6 @@
 package dondecompro.frsf.utn.dondecomproapp;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.view.menu.ListMenuItemView;
@@ -14,24 +15,19 @@ public class ProductosActivity extends AppCompatActivity {
 
     ArrayList<Producto> listaProductos = new ArrayList<Producto>();
     ArrayAdapter<Producto> lvProductosAdapter;
-
+    private ProductoAdapter adapter;
+    Context context = ProductosActivity.this;
+    ListView lista_productos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_productos);
         this.inicializarListaProductos();
-        ListView lvProductos = (ListView) findViewById(R.id.lvProductos);
-        ArrayList<String> sproductos = new ArrayList<String>();
+        adapter = new ProductoAdapter(ProductosActivity.this, listaProductos);
+        lista_productos = (ListView)findViewById(R.id.lvProductos);
+        lista_productos.setAdapter(adapter);
 
-        for(Producto p: listaProductos){
-            sproductos.add(p.toString());
-        }
-
-        lvProductosAdapter = new ArrayAdapter<Producto>(this, android.R.layout.simple_selectable_list_item, listaProductos);
-        lvProductos.setAdapter(lvProductosAdapter);
-        //listaProductos.setChoiceMode(listaMenu.CHOICE_MODE_MULTIPLE);
-        //listaProductos.setOnItemClickListener(this);
     }
 
     private void inicializarListaProductos(){
