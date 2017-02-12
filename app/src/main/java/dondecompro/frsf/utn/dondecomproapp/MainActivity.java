@@ -12,14 +12,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-
-
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.net.Uri;
 
-public class MainOneActivity extends AppCompatActivity
+public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, LocationListener {
 
     @Override
@@ -100,17 +98,22 @@ public class MainOneActivity extends AppCompatActivity
             // Busqueda de supermercdos mas cercanos a esta posicion
             //-31.6191597,-60.704008,15z
             // -31.6348961,-60.7007596,15z /// rivadavia y bulevar con 15 de zoom
+            //TODO Agu: Tomar Posicion GPS | Seguridad.
             Uri gmmIntentUri = Uri.parse("geo:-31.6348961,-60.7007596?q=supermercados");
             Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
             mapIntent.setPackage("com.google.android.apps.maps");
             startActivity(mapIntent);
 
-
+            //SupportMapFragment fragment = new SupportMapFragment();
+            //getSupportFragmentManager().beginTransaction()
+            //        .add(android.R.id.content, fragment).commit();
 
             // TODO: instanciar la clase UbicacionActivity para manejar las ubicaciones de los super
             /// implementar el codigo acá
 
         } else if (id == R.id.nav_enviar_pedido) {
+            //TODO: Instanciar un Activity con una lista de compra de las que vas a poder elegir una. Ver avisos no hay pedidos.
+            //Seleccinar un Super.
 
         } else if (id == R.id.nav_ver_productos) {
             Intent i= new Intent(this,ProductosActivity.class);
@@ -122,7 +125,6 @@ public class MainOneActivity extends AppCompatActivity
 
         }*/
 
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -133,8 +135,8 @@ public class MainOneActivity extends AppCompatActivity
     /// metodos que hay que implementar de la interfaz  LocationListener
     @Override
     public void onLocationChanged(Location location) {
-        // Este mŽtodo se ejecuta cada vez que el GPS recibe nuevas coordenadas
-        // debido a la detecci—n de un cambio de ubicacion
+        // Este metodo se ejecuta cada vez que el GPS recibe nuevas coordenadas
+        // debido a la deteccion de un cambio de ubicacion
 
       /*  location.getLatitude();
         location.getLongitude();
@@ -158,6 +160,4 @@ public class MainOneActivity extends AppCompatActivity
     public void onProviderDisabled(String provider) {
 
     }
-
-
 }
