@@ -1,110 +1,119 @@
 package dondecompro.frsf.utn.dondecomproapp.modelo;
 
-import java.text.DecimalFormat;
-import java.util.Random;
-
 /**
- * Created by Martin on 09/02/2017.
+ * Created by Martin on 04/02/2017.
  */
-
 
 public class Producto {
 
-    private Integer id;
-    private String nombre;
+    private int id;
+    private  long codigoBarra;
+    private  String nombre;
+    private  String marca;
+    private float precio;
     private String categoria;
-    private Double precio;
+    private  String descripcion;
 
+    public Producto(int id, long codigoBarra, String nombre, String marca, float precio, String categoria, String descripcion) {
+        this.id = id;
+        this.codigoBarra = codigoBarra;
+        this.nombre = nombre;
+        this.marca = marca;
+        this.precio = precio;
+        this.categoria = categoria;
+        this.descripcion = descripcion;
+    }
 
-    DecimalFormat f = new DecimalFormat("##.00");
+    public Producto(int id, String nombre, String marca, String categoria) {
+        this.id = id;
+        this.nombre = nombre;
+        this.marca = marca;
+        this.categoria = categoria;
+    }
 
+    public Producto(int id, String nombre, float precio, String marca) {
+        this.id = id;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.marca = marca;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
+    public void setCodigoBarra(long codigoBarra) {
+        this.codigoBarra = codigoBarra;
+    }
 
-        public Producto(Integer i, String n, double v) {
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-        }
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
 
-        public Producto(Integer i, String n, double p, String c) {
-            this.setId(i);
-            this.setNombre(n);
-            this.setPrecio(p);
-            this.setCategoria(c);
-        }
-
-        public Producto(Integer i, String n) {
-            this(i, n, 0.0);
-            Random r = new Random();
-            this.precio = (r.nextInt(3) + 1) * ((r.nextDouble() * 100));
-        }
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public String getNombre() {
-            return nombre;
-        }
-
-        public void setNombre(String nombre) {
-            this.nombre = nombre;
-        }
-
-        public Double getPrecio() {
-            return precio;
-        }
-
-        public void setPrecio(Double precio) {
-            this.precio = precio;
-        }
-
-    public String getCategoria() {
-        return categoria;
+    public void setPrecio(float precio) {
+        this.precio = precio;
     }
 
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
 
-    public DecimalFormat getF() {
-        return f;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    public void setF(DecimalFormat f) {
-        this.f = f;
+    public int getId() {
+        return id;
     }
+
+    public long getCodigoBarra() {
+        return codigoBarra;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public float getPrecio() {
+        return precio;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+  /*  public int getId_pedido() {
+        return id_pedido;
+    }
+
+    public void setId_pedido(int id_pedido) {
+        this.id_pedido = id_pedido;
+    }*/
 
     @Override
     public String toString() {
         return "Producto{" +
                 "id=" + id +
+                ", codigoBarra=" + codigoBarra +
                 ", nombre='" + nombre + '\'' +
-                ", categoria='" + categoria + '\'' +
+                ", marca='" + marca + '\'' +
                 ", precio=" + precio +
-                ", f=" + f +
+                ", categoria='" + categoria + '\'' +
+                ", descripcion='" + descripcion + '\'' +
                 '}';
     }
+
+
 }
-
- /*   class ItemPedido {
-        private int cantidad;
-        ElementoMenu item;
-
-        public ItemPedido(ElementoMenu item, int cantidad) {
-            this.cantidad = cantidad;
-            this.item = item;
-        }
-
-        public void incrementarCantidad(){
-            this.cantidad+=1;
-        }
-
-        public int getCantidadItem(){
-            return this.cantidad;
-        }
-    }*/
-

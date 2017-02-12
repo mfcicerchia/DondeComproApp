@@ -17,9 +17,10 @@ import dondecompro.frsf.utn.dondecomproapp.modelo.Producto;
 
 public class ProductoAdapter extends BaseAdapter {
     /**Inflater**/
-    ArrayList<Producto> items = new ArrayList<Producto>();
-    Context context;
-    LayoutInflater inflater;
+    private ArrayList<Producto> items = new ArrayList<Producto>();
+    private Context context;
+    private LayoutInflater inflater;
+
     ProductoAdapter(Context context, ArrayList<Producto> items){
         this.items = items;
         this.context = context;
@@ -54,16 +55,16 @@ public class ProductoAdapter extends BaseAdapter {
         }
 
         holder.nombre.setText(this.getItem(position).getNombre());
-        holder.precio.setText(this.getItem(position).getPrecio().toString());
+        holder.precio.setText(Float.toString(this.getItem(position).getPrecio()));
         holder.categoria.setText(this.getItem(position).getCategoria());
 
         return (fila);
     }
 
     class ViewHolder{
-        TextView nombre;
-        TextView precio;
-        TextView categoria;
+        private TextView nombre;
+        private   TextView precio;
+        private  TextView categoria;
 
         ViewHolder(View base){
             this.nombre = (TextView)base.findViewById(R.id.tvProducto);
