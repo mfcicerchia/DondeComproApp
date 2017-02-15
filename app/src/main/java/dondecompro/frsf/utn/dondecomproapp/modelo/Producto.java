@@ -31,11 +31,11 @@ public class Producto {
         this.categoria = categoria;
     }
 
-    public Producto(int id, String nombre, float precio, String marca) {
+    public Producto(int id, String nombre, float precio, String categoria) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
-        this.marca = marca;
+        this.categoria = categoria;
     }
 
     public void setId(int id) {

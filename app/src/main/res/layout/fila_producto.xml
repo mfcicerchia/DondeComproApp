@@ -13,8 +13,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tvProductoLbl"
-            android:layout_weight="0.25"
-            android:textAlignment="center" />
+            android:layout_weight="0.015"
+            android:textAlignment="gravity" />
 
         <TextView
             android:text="prod"
@@ -23,20 +23,28 @@
             android:id="@+id/tvProducto"
             android:layout_weight="1" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
         <TextView
             android:text="Precio: "
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tvPrecioLbl"
-            android:layout_weight="0.25"
-            android:textAlignment="center" />
+            android:layout_weight="6"
+            android:textAlignment="gravity" />
 
         <TextView
             android:text="$$$$$"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tvPrecio"
             android:layout_weight="1" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -49,14 +57,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tvCategoriaLbl"
-            android:layout_weight="0.1"
-            android:textAlignment="center" />
+            android:layout_weight="0.015"
+            android:textAlignment="gravity" />
 
         <TextView
             android:text="Cat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tvCategoria"
-            android:layout_weight="1" />
+            android:layout_weight="2" />
     </LinearLayout>
 </LinearLayout>

@@ -4,7 +4,10 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.view.menu.ListMenuItemView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -18,16 +21,34 @@ public class ProductosActivity extends AppCompatActivity {
     private ProductoAdapter adapter;
     Context context = ProductosActivity.this;
     ListView lista_productos;
+    EditText filtroProducto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_productos);
+        filtroProducto = (EditText)findViewById(R.id.etFiltroProducto);
         this.inicializarListaProductos();
         adapter = new ProductoAdapter(ProductosActivity.this, listaProductos);
         lista_productos = (ListView)findViewById(R.id.lvProductos);
         lista_productos.setAdapter(adapter);
 
+        filtroProducto.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                adapter.getFilter().filter(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
     private void inicializarListaProductos(){
