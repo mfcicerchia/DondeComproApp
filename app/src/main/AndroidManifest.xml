@@ -35,6 +35,7 @@
         </activity>
         <activity android:name=".GestionPedidoActivity" />
         <activity android:name=".NuevoPedidoActivity"></activity>
+        <activity android:name=".UbicacionSupersActivity"></activity>
     </application>
 
 </manifest>

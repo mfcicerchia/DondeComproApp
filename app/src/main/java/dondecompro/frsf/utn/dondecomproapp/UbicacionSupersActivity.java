@@ -3,6 +3,7 @@ package dondecompro.frsf.utn.dondecomproapp;
 import android.*;
 import android.annotation.TargetApi;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -18,7 +19,10 @@ import android.widget.Toast;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 /**
  * Created by Agustin on 15/02/2017.
@@ -109,6 +113,15 @@ public class UbicacionSupersActivity extends AppCompatActivity implements OnMapR
                 @Override
                 public void onMapLongClick(LatLng latLng) {
 
+                    myMap.addMarker(new MarkerOptions().position(latLng)
+                            .title("Nuevo Super:")
+                            .snippet("¿Desea agregar un Super en esta Ubicacion?")
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+
+                    //Todo: sugerir super
+                    //Intent myIntent = new Intent(UbicacionSupersActivity.this, SugerenciaSuperActivity.class);
+                    //myIntent.putExtra("coordenadas", latLng);
+                    //startActivity(myIntent);
                 }
             });
         }catch (SecurityException exception){

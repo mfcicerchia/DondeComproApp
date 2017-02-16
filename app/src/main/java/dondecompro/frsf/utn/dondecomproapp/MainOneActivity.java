@@ -106,14 +106,14 @@ public class MainOneActivity extends AppCompatActivity
             // Busqueda de supermercdos mas cercanos a esta posicion
             //-31.6191597,-60.704008,15z
             // -31.6348961,-60.7007596,15z /// rivadavia y bulevar con 15 de zoom
-            Uri gmmIntentUri = Uri.parse("geo:-31.6348961,-60.7007596?q=supermercados");
-            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-            mapIntent.setPackage("com.google.android.apps.maps");
-            startActivity(mapIntent);
-
-
-
+            //Uri gmmIntentUri = Uri.parse("geo:-31.6348961,-60.7007596?q=supermercados");
+            //Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+            //mapIntent.setPackage("com.google.android.apps.maps");
+            //startActivity(mapIntent);
             // TODO: instanciar la clase UbicacionActivity para manejar las ubicaciones de los super
+            Intent buscarSuperIntent= new Intent(this, UbicacionSupersActivity.class);
+            startActivity(buscarSuperIntent);
+
             /// implementar el codigo acá
 
         } else if (id == R.id.nav_enviar_pedido) {
