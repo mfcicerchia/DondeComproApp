@@ -20,7 +20,7 @@ public class DondeComproDAO {
     /**
      * Como no existe el Join directo creo la consulta por afuera y luego la uso en el rawquery de cursor listarProductosPorPedido
      */
-    private static final String _PRODUCTOS_X_PEDID_X_idPEdido = "SELECT " + DondeComproDBMetadata.TABLA_PRODUCTO_ALIAS + "." + DondeComproDBMetadata.TablaProductoMetadata._ID + ", "
+    /*private static final String _PRODUCTOS_X_PEDID_X_idPEdido = "SELECT " + DondeComproDBMetadata.TABLA_PRODUCTO_ALIAS + "." + DondeComproDBMetadata.TablaProductoMetadata._ID + ", "
             + DondeComproDBMetadata.TablaProductoMetadata.CODIGO_BARRAS + ", "
             + DondeComproDBMetadata.TablaProductoMetadata.NOMBRE + ", "
             + DondeComproDBMetadata.TablaProductoMetadata.PRECIO + ", "
@@ -28,9 +28,9 @@ public class DondeComproDAO {
             "FROM " + DondeComproDBMetadata.TABLA_PRODUCTO + " " + DondeComproDBMetadata.TABLA_PRODUCTO_ALIAS + ", "
             + DondeComproDBMetadata.TABLA_PEDIDO + " " + DondeComproDBMetadata.TABLA_PEDIDO_ALIAS +
             "WHERE " + DondeComproDBMetadata.TABLA_PRODUCTO_ALIAS + "." + DondeComproDBMetadata.TablaProductoMetadata.ID_PEDIDO + " = " + DondeComproDBMetadata.TABLA_PEDIDO_ALIAS + "." + DondeComproDBMetadata.TablaPedidoMetadata._ID + "AND "
-            + DondeComproDBMetadata.TABLA_PEDIDO_ALIAS + "." + DondeComproDBMetadata.TablaPedidoMetadata._ID + " = ?";
+            + DondeComproDBMetadata.TABLA_PEDIDO_ALIAS + "." + DondeComproDBMetadata.TablaPedidoMetadata._ID + " = ?";*/
 
-    private static final String _PRODUCTOS_X_PEDID_X_nombrePEDIDO = "SELECT " + DondeComproDBMetadata.TABLA_PRODUCTO_ALIAS + "." + DondeComproDBMetadata.TablaProductoMetadata._ID + ", "
+    /*private static final String _PRODUCTOS_X_PEDID_X_nombrePEDIDO = "SELECT " + DondeComproDBMetadata.TABLA_PRODUCTO_ALIAS + "." + DondeComproDBMetadata.TablaProductoMetadata._ID + ", "
             + DondeComproDBMetadata.TablaProductoMetadata.CODIGO_BARRAS + ", "
             + DondeComproDBMetadata.TablaProductoMetadata.NOMBRE + ", "
             + DondeComproDBMetadata.TablaProductoMetadata.PRECIO + ", "
@@ -38,33 +38,41 @@ public class DondeComproDAO {
             "FROM " + DondeComproDBMetadata.TABLA_PRODUCTO + " " + DondeComproDBMetadata.TABLA_PRODUCTO_ALIAS + ", "
             + DondeComproDBMetadata.TABLA_PEDIDO + " " + DondeComproDBMetadata.TABLA_PEDIDO_ALIAS +
             "WHERE " + DondeComproDBMetadata.TABLA_PRODUCTO_ALIAS + "." + DondeComproDBMetadata.TablaProductoMetadata.ID_PEDIDO + " = " + DondeComproDBMetadata.TABLA_PEDIDO_ALIAS + "." + DondeComproDBMetadata.TablaPedidoMetadata._ID + "AND "
-            + DondeComproDBMetadata.TABLA_PEDIDO_ALIAS + "." + DondeComproDBMetadata.TablaPedidoMetadata.NOMBRE + " = ?";
+            + DondeComproDBMetadata.TABLA_PEDIDO_ALIAS + "." + DondeComproDBMetadata.TablaPedidoMetadata.NOMBRE + " = ?";*/
 
 
     /*select pro.*                                              + ;
     from pedido as pe, producto as pro
     where  pe.id_pedido = pro.id_pedido // reemplazar id_pedido de pro por "?" (para el rawQuery)*/
 
-    private final Context context;
+
     private DondeComproDBHelper dbHelper;
     private SQLiteDatabase db;
 
+    /*public DondeComproDAO(Context context, SQLiteDatabase db, DondeComproDBHelper dbHelper) {
+        this.context = context;
+        this.db = db;
+        this.dbHelper = dbHelper;
+    }*/
+
     public DondeComproDAO(Context c) {
-        context = c;
-        this.dbHelper = new DondeComproDBHelper ( context );
+        dbHelper = new DondeComproDBHelper(c);
     }
 
-    public void open() {
+    /*public void open() {
         this.open ( false );
+    }*/
+    public void open() {
+        db = dbHelper.getWritableDatabase();
     }
 
-    public void open(Boolean toWrite) {
+   /* public void open(Boolean toWrite) {
         if (toWrite) {
             db = dbHelper.getWritableDatabase ();
         } else {
             db = dbHelper.getReadableDatabase ();
         }
-    }
+    }*/
 
     public void close() {
         db = dbHelper.getReadableDatabase ();
@@ -87,9 +95,9 @@ public class DondeComproDAO {
 
     // Listar todos los Pedidos
     public Cursor getAllPedidos() {
-        String[] atributos = new String[]{DondeComproDBMetadata.TablaPedidoMetadata._ID,
-                DondeComproDBMetadata.TablaPedidoMetadata.NOMBRE,
-                DondeComproDBMetadata.TablaPedidoMetadata.ESTADO};
+        String[] atributos = new String[]{DondeComproDBMetadata.TablaPedidoMetadata.COLUMNA_ID,
+                DondeComproDBMetadata.TablaPedidoMetadata.COLUMNA_NOMBRE,
+                DondeComproDBMetadata.TablaPedidoMetadata.COLUMNA_ESTADO};
 
         Cursor c = db.query ( DondeComproDBMetadata.TABLA_PEDIDO, atributos, null, null, null, null, null );
         return c;
@@ -127,7 +135,7 @@ public class DondeComproDAO {
 
     //TODO: CURSOR PARA LISTAR TODOS LOS PRODUCTOS DE UN PEDIDO (2 formas)
 
-    public Cursor getProductosPorIdPedido(int idPedido) {
+   /* public Cursor getProductosPorIdPedido(int idPedido) {
         Cursor c = null;
         try {
             c = db.rawQuery ( _PRODUCTOS_X_PEDID_X_idPEdido, new String[]{Integer.toString ( idPedido )} );
@@ -135,9 +143,9 @@ public class DondeComproDAO {
             ex.printStackTrace ();
         }
         return c;
-    }
+    }*/
 
-    public Cursor getProductosPorNombrePedido(String nombrePedido) {
+   /* public Cursor getProductosPorNombrePedido(String nombrePedido) {
         Cursor c = null;
         try {
             c = db.rawQuery ( _PRODUCTOS_X_PEDID_X_idPEdido, new String[]{nombrePedido} );
@@ -145,7 +153,7 @@ public class DondeComproDAO {
             ex.printStackTrace ();
         }
         return c;
-    }
+    }*/
 
 
     //TODO: IMPLEMENTACION DE INSERCIONES (INSERTS)
@@ -170,12 +178,12 @@ public class DondeComproDAO {
     }
 
 
-    public void nuevoPedido(Pedido Pedido) {
+    public void nuevoPedido(String nombrePedido) {
         ContentValues nuevoPedido = new ContentValues ();
 
-        nuevoPedido.put ( DondeComproDBMetadata.TablaPedidoMetadata._ID, Pedido.getId () );
-        nuevoPedido.put ( DondeComproDBMetadata.TablaPedidoMetadata.NOMBRE, Pedido.getNombre () );
-        nuevoPedido.put ( DondeComproDBMetadata.TablaPedidoMetadata.ESTADO, Pedido.getEstado () );
+        //nuevoPedido.put ( DondeComproDBMetadata.TablaPedidoMetadata._ID, Pedido.getId () );
+        nuevoPedido.put ( DondeComproDBMetadata.TablaPedidoMetadata.COLUMNA_NOMBRE, nombrePedido );
+       // nuevoPedido.put ( DondeComproDBMetadata.TablaPedidoMetadata.ESTADO, Pedido.getEstado () );
 
 
         try {
@@ -211,15 +219,15 @@ public class DondeComproDAO {
         ContentValues actPedido = new ContentValues ();
 
 
-        actPedido.put ( DondeComproDBMetadata.TablaPedidoMetadata.NOMBRE, pedido.getNombre () );
-        actPedido.put ( DondeComproDBMetadata.TablaPedidoMetadata.ESTADO, pedido.getNombre () );
+        actPedido.put ( DondeComproDBMetadata.TablaPedidoMetadata.COLUMNA_NOMBRE, pedido.getNombre () );
+        actPedido.put ( DondeComproDBMetadata.TablaPedidoMetadata.COLUMNA_ESTADO, pedido.getNombre () );
         for (Producto p : pedido.getListaProductos ()) {
             actualizarProducto ( p );
         }
 
         /**Actualizamos la Base de Datos**/
         try {
-            db.update ( DondeComproDBMetadata.TABLA_PEDIDO, actPedido, DondeComproDBMetadata.TablaPedidoMetadata._ID + "=" + pedido.getId (), null );
+            db.update ( DondeComproDBMetadata.TABLA_PEDIDO, actPedido, DondeComproDBMetadata.TablaPedidoMetadata.COLUMNA_ID + "=" + pedido.getId (), null );
         } catch (SQLException ex) {
             ex.printStackTrace ();
         }
@@ -245,7 +253,7 @@ public class DondeComproDAO {
                 borrarProducto ( p );
             }
             /**por ultimo borramos el pedido*/
-            db.delete ( DondeComproDBMetadata.TABLA_PEDIDO, DondeComproDBMetadata.TablaPedidoMetadata._ID + " = " + pedido.getId (), null );
+            db.delete ( DondeComproDBMetadata.TABLA_PEDIDO, DondeComproDBMetadata.TablaPedidoMetadata.COLUMNA_ID + " = " + pedido.getId (), null );
 
         } catch (SQLException ex) {
             ex.printStackTrace ();

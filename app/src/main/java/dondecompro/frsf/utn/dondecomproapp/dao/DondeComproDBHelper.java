@@ -19,6 +19,11 @@ import java.util.ArrayList;
 
 public class DondeComproDBHelper extends SQLiteOpenHelper {
 
+    private static final String DATABASE_CREATE = "create table "
+            + DondeComproDBMetadata.TABLA_PEDIDO + "("
+            + DondeComproDBMetadata.TablaPedidoMetadata.COLUMNA_ID + " integer primary key autoincrement, "
+            + DondeComproDBMetadata.TablaPedidoMetadata.COLUMNA_NOMBRE + " text not null);";
+
 
     private Context context;
 
@@ -32,12 +37,14 @@ public class DondeComproDBHelper extends SQLiteOpenHelper {
 
     public DondeComproDBHelper(Context context) {
         super(context, DondeComproDBMetadata.NOMBRE_DB, null, DondeComproDBMetadata.VERSION_DB);
-        this.context = context;
+
+
+
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        try {
+        /*try {
             ArrayList<String> tablas = this.leerTablas();
             int i=1;
             for (String sql : tablas) {
@@ -47,7 +54,9 @@ public class DondeComproDBHelper extends SQLiteOpenHelper {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
+
+        db.execSQL(DATABASE_CREATE);
     }
 
     @Override
@@ -55,12 +64,13 @@ public class DondeComproDBHelper extends SQLiteOpenHelper {
         // This database is only a cache for online data, so its upgrade policy is
         // to simply to discard the data and start over
         //db.execSQL(SQL_DELETE_ENTRIES);
+        db.execSQL("delete table if exists " + DondeComproDBMetadata.TABLA_PEDIDO);
         onCreate(db);
     }
 
-    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    /*public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         onUpgrade(db, oldVersion, newVersion);
-    }
+    }*/
 
     public ArrayList<String> leerTablas() throws IOException {
 

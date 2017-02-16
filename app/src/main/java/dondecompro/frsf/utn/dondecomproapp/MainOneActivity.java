@@ -19,8 +19,11 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.net.Uri;
 
+
+
 public class MainOneActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, LocationListener {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,9 @@ public class MainOneActivity extends AppCompatActivity
         setContentView(R.layout.activity_main_one);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+       /* dao = new DondeComproDAO(this);
+        dao.open();*/
+        //cursor  = dao.getAllProductos();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -87,13 +93,13 @@ public class MainOneActivity extends AppCompatActivity
 
         if (id == R.id.nav_gen_pedido) {
 
-            Intent i= new Intent(this,PedidoActivity.class);
+            Intent i= new Intent(this,GestionPedidoActivity.class);
             // i.putExtra("cliente",etNombreCliente.getText().toString());
             //i.putExtra("direccion", et1.getText().toString());
             startActivity(i);
 
         } else if (id == R.id.nav_ver_pedido) {
-            Intent i= new Intent(this,PedidoActivity.class);
+            Intent i= new Intent(this,NuevoPedidoActivity.class);
             startActivity(i);
 
         } else if (id == R.id.nav_buscar_super) {

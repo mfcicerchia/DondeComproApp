@@ -11,8 +11,9 @@ import android.provider.BaseColumns;
 
 public class DondeComproDBMetadata {
 
+    public static final String NOMBRE_DB = "DondeComproDB";
     public static final int VERSION_DB = 1;
-    public static final String NOMBRE_DB = "dondecompro.db";
+
 
     public static final String TABLA_PEDIDO= "PEDIDO";
     public static final String TABLA_PEDIDO_ALIAS= " ped";
@@ -24,10 +25,11 @@ public class DondeComproDBMetadata {
     public static final String TABLA_SUPERMERCADO_ALIAS= " sup";
 
 
-    public static class TablaPedidoMetadata implements BaseColumns{
-        public static final String NOMBRE ="NOMBRE_PEDIDO";
-        public static final String TIT_PEDI_ALIAS ="NOM_PED";
-        public static final String ESTADO = "ESTADO";
+    public static class TablaPedidoMetadata  {
+        public static String COLUMNA_ID = "_id";
+        public static final String COLUMNA_NOMBRE ="nombre_pedido";
+        //public static final String TIT_PEDI_ALIAS ="NOM_PED";
+        public static final String COLUMNA_ESTADO = "estado";
     }
 
     public static class TablaProductoMetadata implements BaseColumns{

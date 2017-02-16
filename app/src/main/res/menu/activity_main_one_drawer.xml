@@ -6,7 +6,7 @@
         <item
             android:id="@+id/nav_gen_pedido"
             android:icon="@drawable/nuevo_pedido48"
-            android:title="Nuevo Pedido" />
+            android:title="Gestionar Pedidos" />
         <item
             android:id="@+id/nav_ver_pedido"
             android:icon="@drawable/search_database"
