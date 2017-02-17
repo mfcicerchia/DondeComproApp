@@ -99,7 +99,7 @@ public class MainOneActivity extends AppCompatActivity
             startActivity(i);
 
         } else if (id == R.id.nav_ver_pedido) {
-            Intent i= new Intent(this,NuevoPedidoActivity.class);
+            Intent i= new Intent(this,ProductosToPedido.class);
             startActivity(i);
 
         } else if (id == R.id.nav_buscar_super) {

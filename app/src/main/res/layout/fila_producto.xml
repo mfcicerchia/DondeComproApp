@@ -14,14 +14,16 @@
             android:layout_height="wrap_content"
             android:id="@+id/tvProductoLbl"
             android:layout_weight="0.015"
-            android:textAlignment="gravity" />
+            android:textAlignment="gravity"
+            android:textSize="12sp" />
 
         <TextView
             android:text="prod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tvProducto"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:typeface="sans" />
 
     </LinearLayout>
 
@@ -36,14 +38,16 @@
             android:layout_height="wrap_content"
             android:id="@+id/tvPrecioLbl"
             android:layout_weight="6"
-            android:textAlignment="gravity" />
+            android:textAlignment="gravity"
+            android:textSize="14sp" />
 
         <TextView
             android:text="$$$$$"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tvPrecio"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:typeface="sans" />
 
     </LinearLayout>
 
@@ -65,6 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tvCategoria"
-            android:layout_weight="2" />
+            android:layout_weight="2"
+            android:typeface="sans" />
     </LinearLayout>
 </LinearLayout>

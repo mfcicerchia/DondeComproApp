@@ -111,7 +111,7 @@ public class GestionPedidoActivity extends AppCompatActivity implements AdapterV
                             public void onClick(DialogInterface arg0, int arg1) {
                                 // TODO Auto-generated method stub
 
-                                Intent i = new Intent(view.getContext(), ProductosActivity.class);
+                                Intent i = new Intent(view.getContext(), ProductosToPedido.class);
                                 startActivityForResult(i, requestCode);
                                 //lvPedidos.dispatchSetSelected(false);
                             }

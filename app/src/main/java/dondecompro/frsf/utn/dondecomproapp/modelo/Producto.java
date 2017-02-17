@@ -38,6 +38,14 @@ public class Producto {
         this.categoria = categoria;
     }
 
+    public Producto(String nombre, float precio, String categoria) {
+        this.id = id;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.categoria = categoria;
+    }
+
+
     public void setId(int id) {
         this.id = id;
     }

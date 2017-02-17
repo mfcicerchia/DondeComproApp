@@ -15,6 +15,16 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
+        <!-- android:label="@string/app_name" -->
+
+        <activity android:name=".InicioSplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".MainOneActivity"
             android:label="@string/app_name"
@@ -25,8 +35,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    <!--        <activity android:name=".PedidoActivity" />-->
+
         <activity android:name=".ProductosActivity" />
+        <activity android:name=".ProductosToPedido" />
         <activity android:name=".GestionPedidoActivity" />
         <activity android:name=".NuevoPedidoActivity"></activity>
         <activity android:name=".UbicacionSupersActivity"></activity>
