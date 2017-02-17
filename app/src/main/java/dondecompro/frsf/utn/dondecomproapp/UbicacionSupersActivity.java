@@ -1,11 +1,12 @@
 package dondecompro.frsf.utn.dondecomproapp;
 
-import android.*;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteException;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
@@ -36,6 +37,8 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import dondecompro.frsf.utn.dondecomproapp.dao.DondeComproDAO;
+
 /**
  * Created by Agustin on 15/02/2017.
  */
@@ -49,6 +52,7 @@ public class UbicacionSupersActivity extends AppCompatActivity
     private GoogleApiClient client;
     private LocationManager locationManager;
     private Location ubicacionActual;
+    private DondeComproDAO dao;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -66,7 +70,7 @@ public class UbicacionSupersActivity extends AppCompatActivity
                             public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
                             }
-                })
+                        })
                 .addApi(LocationServices.API)
                 .build();
 
@@ -77,8 +81,8 @@ public class UbicacionSupersActivity extends AppCompatActivity
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-            this.myMap = googleMap;
-            this.iniciarMapa();
+        this.myMap = googleMap;
+        this.iniciarMapa();
     }
 
     private void askForLocationPermission() {
@@ -143,6 +147,7 @@ public class UbicacionSupersActivity extends AppCompatActivity
             this.myMap.setMyLocationEnabled(true);
             this.askForEnableLocalizacion(locationManager);
             this.myMap.setMapType(GoogleMap.MAP_TYPE_NORMAL); // Asigno una vista al mapa
+            this.agregarMarkerSupers();
             this.myMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
                 @Override
                 public void onMapLongClick(LatLng latLng) {
@@ -150,7 +155,7 @@ public class UbicacionSupersActivity extends AppCompatActivity
                     myMap.addMarker(new MarkerOptions().position(latLng)
                             .title("Nuevo Super:")
                             .snippet("¿Desea agregar un Super en esta Ubicacion?")
-                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_super_small)));
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_googlemaps_supers_agregar)));
 
                     //Todo: sugerir super
                     //Intent myIntent = new Intent(UbicacionSupersActivity.this, SugerenciaSuperActivity.class);
@@ -241,6 +246,35 @@ public class UbicacionSupersActivity extends AppCompatActivity
         Log.v("GPS", "No se puede acercar");
     }
 
+    private void agregarMarkerSupers(){
+        try{
+            this.dao = new DondeComproDAO(this);
+            this.dao.open();
+            Cursor supersCursor = dao.getAllSupermercados();
+
+            //Nos aseguramos de que existe al menos un registro
+            if (supersCursor.moveToFirst()) {
+                //Recorremos el cursor hasta que no haya más registros
+                do {
+                    String codigo = supersCursor.getString(0); //TODO: Hacer Objeto Super!! Esta funcion es del DAO.
+                    String nombre = supersCursor.getString(1);
+                    String direccion = supersCursor.getString(2);
+                    String latitud = supersCursor.getString(3);
+                    String longitud = supersCursor.getString(4);
+                    myMap.addMarker( new MarkerOptions()
+                            .position(new LatLng(Double.parseDouble(latitud),Double.parseDouble(longitud)))
+                            .title(nombre)
+                            .snippet("Direccion: "+direccion)
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_googlemaps_supers_agregar)));
+
+                } while(supersCursor.moveToNext());
+            }
+            this.dao.close();
+
+        }catch (SQLiteException exception){
+            Toast.makeText(this.getApplicationContext(), "Error DB al traer Supers", Toast.LENGTH_LONG).show();
+        }
+    }
 
     public Action getIndexApiAction() {
         Thing object = new Thing.Builder()
