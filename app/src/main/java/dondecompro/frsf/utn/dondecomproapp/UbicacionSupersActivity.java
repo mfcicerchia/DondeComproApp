@@ -1,10 +1,18 @@
 package dondecompro.frsf.utn.dondecomproapp;
 
+import android.*;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -14,6 +22,13 @@ import android.support.v7.view.ContextThemeWrapper;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.appindexing.Thing;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -25,10 +40,15 @@ import com.google.android.gms.maps.model.MarkerOptions;
  * Created by Agustin on 15/02/2017.
  */
 
-public class UbicacionSupersActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class UbicacionSupersActivity extends AppCompatActivity
+        implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks {
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
+    private static final int ZOOM_GOOGLEMAPS_INICIAL = 14;
 
     private GoogleMap myMap;
+    private GoogleApiClient client;
+    private LocationManager locationManager;
+    private Location ubicacionActual;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,6 +57,20 @@ public class UbicacionSupersActivity extends AppCompatActivity implements OnMapR
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(
+                        new GoogleApiClient.OnConnectionFailedListener() {
+                            @Override
+                            public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+                            }
+                })
+                .addApi(LocationServices.API)
+                .build();
+
+        this.locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
         this.askForLocationPermission();
     }
@@ -89,6 +123,7 @@ public class UbicacionSupersActivity extends AppCompatActivity implements OnMapR
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     if (myMap != null){
+                        Log.v("onRequestPermResult","Permiso Obtenido");
                         iniciarMapa();
                     }
                 } else {
@@ -106,6 +141,8 @@ public class UbicacionSupersActivity extends AppCompatActivity implements OnMapR
     private void iniciarMapa() {
         try {  // Habilitar Funciones
             this.myMap.setMyLocationEnabled(true);
+            this.askForEnableLocalizacion(locationManager);
+            this.myMap.setMapType(GoogleMap.MAP_TYPE_NORMAL); // Asigno una vista al mapa
             this.myMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
                 @Override
                 public void onMapLongClick(LatLng latLng) {
@@ -127,4 +164,114 @@ public class UbicacionSupersActivity extends AppCompatActivity implements OnMapR
         }
     }
 
+    /**
+     * Preguntar si se puede habilitar localizacion
+     */
+    private void askForEnableLocalizacion(LocationManager locationManager) {
+        boolean isGPS = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+
+        if (!isGPS) { // Si esta inhabilitado el GPS, pruebo habilitarlo con el usuario
+            AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(UbicacionSupersActivity.this, R.style.myDialog));
+            builder.setTitle("Habilitar Localización");
+            builder.setMessage("¿Permite habilitar localizacion?");
+            builder.setPositiveButton(android.R.string.ok,
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            startActivityForResult(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS), 0);
+                            dialog.dismiss();
+                        }
+                    });
+            builder.setNegativeButton(android.R.string.cancel,
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+            builder.create();
+            builder.show();
+        }
+    }
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        this.ubicacionActual = LocationServices.FusedLocationApi.getLastLocation(this.client);
+        Log.v("onConnected","acercarToLocalizacion");
+        this.acercarToLocalizacion();
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+        Log.v("onConnectionSuspended","Conexion Suspendida");
+    }
+
+    private void acercarToLocalizacion() {
+
+        if (this.ubicacionActual != null) {
+            LatLng ubicacionActualLatLng = new LatLng(this.ubicacionActual.getLatitude(), this.ubicacionActual.getLongitude());
+            Log.v("Ubicacion Actual", ubicacionActualLatLng.toString());
+            this.myMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacionActualLatLng, UbicacionSupersActivity.ZOOM_GOOGLEMAPS_INICIAL));
+            return;
+        } else {
+            try {
+                Location lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                if (lastLocation == null) { // GPS Apagado | No existe localizacion
+                    Criteria criteria = new Criteria();
+                    criteria.setAccuracy(Criteria.ACCURACY_COARSE);
+                    String provider = locationManager.getBestProvider(criteria, true);
+                    lastLocation = locationManager.getLastKnownLocation(provider);
+                }
+
+                if (lastLocation != null) { // Encontre localizacion
+                    LatLng ubicacionAproximada = new LatLng(lastLocation.getLatitude(), lastLocation.getLongitude());
+                    Log.v("Ubicacion Aproximada", ubicacionAproximada.toString());
+                    this.myMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacionAproximada, UbicacionSupersActivity.ZOOM_GOOGLEMAPS_INICIAL));
+                    return;
+                }
+
+            } catch (SecurityException exception) {
+                Toast.makeText(getApplicationContext(), "No posee permisos GPS", Toast.LENGTH_SHORT).show();
+                Log.v("SecurityException", exception.getMessage());
+            }
+        }
+        Log.v("GPS", "No se puede acercar");
+    }
+
+
+    public Action getIndexApiAction() {
+        Thing object = new Thing.Builder()
+                .setName("Ubicacion Supers") // TODO: Define a title for the content shown.
+                // TODO: Make sure this auto-generated URL is correct.
+                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
+                .build();
+        return new Action.Builder(Action.TYPE_VIEW)
+                .setObject(object)
+                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
+                .build();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client.connect();
+        AppIndex.AppIndexApi.start(client, getIndexApiAction());
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        AppIndex.AppIndexApi.end(client, getIndexApiAction());
+        client.disconnect();
+    }
 }
