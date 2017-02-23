@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="dondecompro.frsf.utn.dondecomproapp.MainOneActivity"
+    tools:context="dondecompro.frsf.utn.dondecomproapp.MainActivity"
 
     tools:showIn="@layout/app_bar_main_one"
     android:background="@drawable/fondo10"
@@ -18,6 +18,6 @@
     android:backgroundTintMode="multiply"
     android:minHeight="0dp"
     android:padding="@android:dimen/app_icon_size">
-    <!--tools:context="com.preventa.martin.advlist.MainOneActivity"-->
+    <!--tools:context="com.preventa.martin.advlist.MainActivity"-->
 
 </RelativeLayout>

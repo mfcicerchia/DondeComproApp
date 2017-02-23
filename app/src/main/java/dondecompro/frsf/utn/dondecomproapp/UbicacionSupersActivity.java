@@ -147,7 +147,7 @@ public class UbicacionSupersActivity extends AppCompatActivity
             this.myMap.setMyLocationEnabled(true);
             this.askForEnableLocalizacion(locationManager);
             this.myMap.setMapType(GoogleMap.MAP_TYPE_NORMAL); // Asigno una vista al mapa
-            this.agregarMarkerSupers();
+//            this.agregarMarkerSupers(); TODO: Agregar marcadores
             this.myMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
                 @Override
                 public void onMapLongClick(LatLng latLng) {
@@ -256,7 +256,7 @@ public class UbicacionSupersActivity extends AppCompatActivity
             if (supersCursor.moveToFirst()) {
                 //Recorremos el cursor hasta que no haya más registros
                 do {
-                    String codigo = supersCursor.getString(0); //TODO: Hacer Objeto Super!! Esta funcion es del DAO.
+                    String codigo = supersCursor.getString(0); //TODO: Esta funcion es del DAO.
                     String nombre = supersCursor.getString(1);
                     String direccion = supersCursor.getString(2);
                     String latitud = supersCursor.getString(3);
@@ -308,4 +308,5 @@ public class UbicacionSupersActivity extends AppCompatActivity
         AppIndex.AppIndexApi.end(client, getIndexApiAction());
         client.disconnect();
     }
+
 }

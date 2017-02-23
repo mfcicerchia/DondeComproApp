@@ -4,6 +4,10 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_nuevo_producto"
+            android:icon="@drawable/nuevo_pedido48"
+            android:title="Nuevo Producto" />
+        <item
             android:id="@+id/nav_gen_pedido"
             android:icon="@drawable/nuevo_pedido48"
             android:title="Gestionar Pedidos" />

@@ -4,7 +4,10 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Configuracion</string>
+
+    <string name="nuevoProducto_title_barcode">Nuevo Producto</string>
+    <string name="nuevoProducto_button_barcode">Escanear Codigo</string>
 
     <string name="google_maps_key">AIzaSyCwFZ7vF1c7YrjVmszTC3834L8Apuj7Mrw</string>
 </resources>
