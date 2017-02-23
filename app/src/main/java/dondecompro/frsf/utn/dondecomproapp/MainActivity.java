@@ -17,11 +17,9 @@ import android.view.MenuItem;
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
-import android.net.Uri;
 
 
-
-public class MainOneActivity extends AppCompatActivity
+public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, LocationListener {
 
 
@@ -116,12 +114,18 @@ public class MainOneActivity extends AppCompatActivity
 
             /// implementar el codigo acá
 
-        } else if (id == R.id.nav_enviar_pedido) {
+        }else if(id == R.id.nav_nuevo_producto){
+            Intent i= new Intent(this,NuevoProductoActivity.class);
+            startActivity(i);
+        }
+
+        else if (id == R.id.nav_enviar_pedido) {
 
         } else if (id == R.id.nav_ver_productos) {
             Intent i= new Intent(this,ProductosActivity.class);
             startActivity(i);
         }
+
         /*else if (id == R.id.nav_share) { //lo dejo comentado por si hay que agregar mas opciones de menú
 
         } else if (id == R.id.nav_send) {

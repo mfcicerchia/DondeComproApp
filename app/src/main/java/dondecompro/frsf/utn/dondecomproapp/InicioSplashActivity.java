@@ -5,10 +5,8 @@ import android.os.Bundle;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.os.Bundle;
 import android.view.Window;
 
 public class InicioSplashActivity extends AppCompatActivity {
@@ -33,7 +31,7 @@ public class InicioSplashActivity extends AppCompatActivity {
 
                 // Start the next activity
                 Intent mainIntent = new Intent().setClass(
-                        InicioSplashActivity.this, MainOneActivity.class);
+                        InicioSplashActivity.this, MainActivity.class);
                 startActivity(mainIntent);
 
                 // Close the activity so the user won't able to go back this

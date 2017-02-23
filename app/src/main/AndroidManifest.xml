@@ -2,9 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="dondecompro.frsf.utn.dondecomproapp">
 
-    <!-- Permisos -->
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <!--Permisos-->
+    <!--INTERNET--><uses-permission android:name="android.permission.INTERNET"/>
+    <!--GPS--><uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <!--CAMARA--><uses-feature android:name="android.hardware.camera" />
+    <!--CAMARA--><uses-permission android:name="android.permission.CAMERA" />
+    <!--Sensores--><uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <!--Fin Permisos-->
 
     <application
         android:allowBackup="true"
@@ -12,6 +16,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
@@ -26,7 +31,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainOneActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -41,6 +46,8 @@
         <activity android:name=".GestionPedidoActivity" />
         <activity android:name=".NuevoPedidoActivity"></activity>
         <activity android:name=".UbicacionSupersActivity"></activity>
+        <activity android:name=".NuevoProductoActivity"></activity>
+        <activity android:name=".CapturadorBarCodeActivity" android:label="Lector Productos"/>
     </application>
 
 </manifest>
