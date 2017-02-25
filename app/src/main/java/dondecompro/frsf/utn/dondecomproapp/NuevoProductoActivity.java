@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ public class NuevoProductoActivity extends AppCompatActivity {
     private TextView textTitulo;
     private TextView textCodigoPoducto;
     private TextView textNombreProducto;
+    private ImageView imgViewProducto;
 
     private static final int RC_BARCODE_CAPTURE = 9001;
     private static final String TAG = "NuevoProductoActivity";
@@ -31,6 +33,7 @@ public class NuevoProductoActivity extends AppCompatActivity {
         textTitulo = (TextView)findViewById(R.id.textTitle);
         textCodigoPoducto = (TextView)findViewById(R.id.textValorLeido);
         textNombreProducto = (TextView) findViewById(R.id.textNombreProducto);
+        imgViewProducto = (ImageView) findViewById(R.id.imgViewProducto);
 
         findViewById(R.id.btnBarCode).setOnClickListener(
                 new View.OnClickListener(){
@@ -99,8 +102,8 @@ public class NuevoProductoActivity extends AppCompatActivity {
         return false;
     }
 
-    private void buscarProductoPorCodigoEAN(String codigoProductoAEN){
-        AsyncTask tareaAsincronica = new WebScrapingProductosEAN(NuevoProductoActivity.this, "7790411000050",this.textNombreProducto);
+    private void buscarProductoPorCodigoEAN(String codigoProductoAEN){ //Ejemplo: 7790411000050
+        AsyncTask tareaAsincronica = new WebScrapingProductosEAN(NuevoProductoActivity.this, this, codigoProductoAEN);
         tareaAsincronica.execute();
 
     }
