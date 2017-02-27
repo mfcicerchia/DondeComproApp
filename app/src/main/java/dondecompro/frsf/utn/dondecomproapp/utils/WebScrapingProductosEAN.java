@@ -6,6 +6,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.renderscript.Script;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,7 +29,6 @@ public class WebScrapingProductosEAN extends AsyncTask <Object, Integer, Object>
 
     private final String USER_AGENT = "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36";
     private final String USER_REFERRER = "https://www.google.com/";
-    private final int USER_TIMEOUT = 12000;
     private final String URI_EAN_SEARCH = "https://www.ean-search.org/perl/ean-search.pl?q=";
     private final String URI_UPC_ITEMDB = "http://www.upcitemdb.com/upc/";
     private final String URI_BARCODE_LOOKUP = "https://www.barcodelookup.com/";
@@ -123,6 +123,7 @@ public class WebScrapingProductosEAN extends AsyncTask <Object, Integer, Object>
      */
     @Override
     protected void onPostExecute(Object o) {
+        Log.v("onPostExecute","Resultado: "+resultadoNombreProducto);
 
         if(resultadoNombreProducto == null){
             Toast.makeText(this.contexto, "No se encuentra el producto", Toast.LENGTH_LONG).show();
@@ -152,15 +153,10 @@ public class WebScrapingProductosEAN extends AsyncTask <Object, Integer, Object>
 
     private String buscarProductoWeb_eansearch(){
         try{
-            Document document = Jsoup.connect(this.URI_EAN_SEARCH+this.codigoProductoEAN)
-                    .userAgent(this.USER_AGENT)
-                    .referrer(this.USER_REFERRER)
-                    .timeout(this.USER_TIMEOUT)
-                    .followRedirects(true)
-                    .get();
+            Document document = Jsoup.connect(this.URI_EAN_SEARCH+this.codigoProductoEAN).userAgent(this.USER_AGENT).get();
             String nombreProducto = document.select("#main a").first().text();
 
-            if(nombreProducto.equals(this.codigoProductoEAN) || nombreProducto == "reverse EAN lookup"){
+            if(nombreProducto == this.codigoProductoEAN){
                 return null;
             }
 
@@ -176,15 +172,10 @@ public class WebScrapingProductosEAN extends AsyncTask <Object, Integer, Object>
 
     private String buscarProductoWeb_upcitemdb(){
         try{
-            Document document = Jsoup.connect(this.URI_UPC_ITEMDB+this.codigoProductoEAN)
-                    .userAgent(this.USER_AGENT)
-                    .referrer(this.USER_REFERRER)
-                    .timeout(this.USER_TIMEOUT)
-                    .followRedirects(true)
-                    .get();
+            Document document = Jsoup.connect(this.URI_UPC_ITEMDB+this.codigoProductoEAN).userAgent(this.USER_AGENT).get();
             String nombreProducto = document.select("p[class=\"detailtitle\"] b").first().text();
 
-            if(nombreProducto == null || nombreProducto.equals(this.codigoProductoEAN)){
+            if(nombreProducto == null || nombreProducto == this.codigoProductoEAN){
                 return null;
             }
 
@@ -206,15 +197,10 @@ public class WebScrapingProductosEAN extends AsyncTask <Object, Integer, Object>
 
     private String buscarProductoWeb_barcodelookup(){
         try{
-            Document document = Jsoup.connect(this.URI_BARCODE_LOOKUP+this.codigoProductoEAN)
-                    .userAgent(this.USER_AGENT)
-                    .referrer(this.USER_REFERRER)
-                    .timeout(this.USER_TIMEOUT)
-                    .followRedirects(true)
-                    .get();
+            Document document = Jsoup.connect(this.URI_BARCODE_LOOKUP+this.codigoProductoEAN).userAgent(this.USER_AGENT).get();
             String nombreProducto = document.select("#main-barcode-headers h4").first().text();
 
-            if(nombreProducto == null || nombreProducto.equals(this.codigoProductoEAN)){
+            if(nombreProducto == null || nombreProducto == this.codigoProductoEAN){
                 return null;
             }
 
@@ -236,15 +222,10 @@ public class WebScrapingProductosEAN extends AsyncTask <Object, Integer, Object>
 
     private String buscarProductoWeb_upcscavenger(){
         try{
-            Document document = Jsoup.connect(this.URI_UPC_SCAVENGER+this.codigoProductoEAN)
-                    .userAgent(this.USER_AGENT)
-                    .referrer(this.USER_REFERRER)
-                    .timeout(this.USER_TIMEOUT)
-                    .followRedirects(true)
-                    .get();
+            Document document = Jsoup.connect(this.URI_UPC_SCAVENGER+this.codigoProductoEAN).userAgent(this.USER_AGENT).get();
             String nombreProducto = document.select("h1.us4241186926 div.us1881050501 span").first().text();
 
-            if(nombreProducto == null || nombreProducto.equals(this.codigoProductoEAN)){
+            if(nombreProducto == null || nombreProducto == this.codigoProductoEAN){
                 return null;
             }
 
@@ -264,16 +245,9 @@ public class WebScrapingProductosEAN extends AsyncTask <Object, Integer, Object>
         }
     }
 
-
-
     private String buscarURLPrimerResultadoGoogleImg(String query){
         try {
-            Document document = Jsoup.connect(this.URI_GOOGLE_IMAGENES+query)
-                    .userAgent(this.USER_AGENT)
-                    .referrer(this.USER_REFERRER)
-                    .timeout(this.USER_TIMEOUT)
-                    .followRedirects(true)
-                    .get();
+            Document document = Jsoup.connect(this.URI_GOOGLE_IMAGENES+query).userAgent(this.USER_AGENT).referrer(this.USER_REFERRER).get();
             Elements elements = document.select("div.rg_meta");
 
             Element element = elements.first();
