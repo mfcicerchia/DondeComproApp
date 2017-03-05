@@ -5,4 +5,7 @@
     <color name="colorAccent">#2453ea</color>
     <color name="nombres">#ABAB3412</color>
     <color name="direccion">#5edfb4</color>
+
+    <color name= "estado_no_enviado">#f4e40a</color>
+    <color name= "estado_enviado">#21a400</color>
 </resources>

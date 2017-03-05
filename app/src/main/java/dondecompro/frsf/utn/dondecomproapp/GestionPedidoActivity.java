@@ -1,11 +1,16 @@
 package dondecompro.frsf.utn.dondecomproapp;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.KeyEvent;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,17 +18,26 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dondecompro.frsf.utn.dondecomproapp.dao2.PedidosDAO;
 import dondecompro.frsf.utn.dondecomproapp.modelo.Pedido;
+import dondecompro.frsf.utn.dondecomproapp.modelo.Producto;
+
+import static android.R.id.list;
 
 public class GestionPedidoActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
 
-    private int requestCode = 1;
+    private int requestCode1 = 1;
+    private int requestCode2 = 0; // esta variable representará el id del pedido y se utilizara como
+                                   // parametro para seleccionar los productos del mismo
     private ListView lvPedidos;
     private Button btnNuevoPedido;
+    ArrayAdapter<Pedido> adapter;
+
     private PedidosDAO dao;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +49,7 @@ public class GestionPedidoActivity extends AppCompatActivity implements AdapterV
         dao = new PedidosDAO(this);
         dao.open();
 
-        // Ipstapciamos los elemeptos
+
 
         lvPedidos = (ListView) findViewById(R.id.lvPedidos);
 
@@ -43,41 +57,46 @@ public class GestionPedidoActivity extends AppCompatActivity implements AdapterV
         btnNuevoPedido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // se lanza la nueva actividad para crear el nuevo pedido
                 Intent i = new Intent(v.getContext(), NuevoPedidoActivity.class);
-                //startActivity(i);
-                startActivityForResult(i, requestCode);
+                startActivityForResult(i, requestCode1);
             }
         });
 
 
 
-        // Cargamos la lista de Pedidos dispopibles                           ///// 2do cambio
-        //ArrayList<String> pedidosArrayList = new ArrayList<String>();
+
+        // Cargamos la lista de Pedidos de la BD y la asignamos el ListView de Pedidos
         List<Pedido> listaPedidos = dao.getAllPedidos();
-       /* for (Pedido p : listaPedidos) {
-            pedidosArrayList.add(p.toString());
-            Log.d("Item del Adapter", "YourOutput");
-        }*/
-        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listaPedidos);
-        ArrayAdapter<Pedido> adapter = new ArrayAdapter<Pedido>(this, android.R.layout.simple_list_item_1, listaPedidos);
-        // Establecemos el adapter
+
+        adapter = new ArrayAdapter<Pedido>(this, android.R.layout.simple_list_item_1, listaPedidos);
         lvPedidos.setAdapter(adapter);
-        // Establecemos up Listeper para el evepto de pulsación
+
         lvPedidos.setOnItemClickListener(this);
 
     }
 
 
 
+
     @Override
-    public void onItemClick(final AdapterView<?> adapterView, final View view,
-                            final int position, long id) {
+    public void onItemClick(final AdapterView<?> adapterView, final View view, final int position, long id) {
+
+
+    // Mensaje Toast del elemento seleccionado
+    Pedido pedido = (Pedido) adapterView.getItemAtPosition(position);
+    String item = Integer.toString(pedido.getId());
+    requestCode2 = pedido.getId(); //Actualizamos el requestCode para saber a que pedido pertenece la lista de retorno
+    Toast.makeText(getApplicationContext(), "ID PEDIDO: " + item, Toast.LENGTH_SHORT).show();
+
+
+
         // TODO Auto-geperated method stub
-        AlertDialog.Builder builder = new AlertDialog.Builder(this)
-                .setTitle("Borrar Pedido")
-                .setMessage("¿Desea borrar este Pedido?")
-                .setPositiveButton("Aceptar",
-                        new DialogInterface.OnClickListener() {
+       AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                .setTitle("Gestionar Pedido")
+                .setMessage("¿Elija una Opcion?")
+
+                .setPositiveButton("BORRAR PEDIDO", new DialogInterface.OnClickListener() {
 
                             @Override
                             public void onClick(DialogInterface arg0, int arg1) {
@@ -94,17 +113,7 @@ public class GestionPedidoActivity extends AppCompatActivity implements AdapterV
                             }
                         })
 
-                .setNegativeButton("Cancelar",
-                        new DialogInterface.OnClickListener() {
-
-                            @Override
-                            public void onClick(DialogInterface dialog,
-                                                int which) {
-                                // TODO Auto-geperated method stub
-                                return;
-                            }
-                        })
-                .setNeutralButton("Cargar Productos",
+                .setNeutralButton("CARGAR PRODUCTOS",
                         new DialogInterface.OnClickListener() {
 
                             @Override
@@ -112,24 +121,24 @@ public class GestionPedidoActivity extends AppCompatActivity implements AdapterV
                                 // TODO Auto-generated method stub
 
                                 Intent i = new Intent(view.getContext(), ProductosToPedido.class);
-                                startActivityForResult(i, requestCode);
-                                //lvPedidos.dispatchSetSelected(false);
+
+                                startActivityForResult(i, requestCode2);
+
                             }
                         });
 
-               /* .setNeutralButton("Enviar Pedido",
+
+          /*      .setNeutralButton("Ver Productos",
                         new DialogInterface.OnClickListener() {
 
                             @Override
                             public void onClick(DialogInterface arg0, int arg1) {
                                 // TODO Auto-generated method stub
 
-                                Toast t = Toast.makeText(view.getContext(),"Se enviara el pedido seleccionado por email",Toast.LENGTH_SHORT);
-                                t.show();
-
-
-
-
+                                Intent i = new Intent(view.getContext(), ProductosToPedido.class);
+                                *//*requestCode2 = id;*//*
+                                startActivityForResult(i, requestCode2);
+                                //lvPedidos.dispatchSetSelected(false);
                             }
                         });*/
         builder.show();
@@ -142,10 +151,34 @@ public class GestionPedidoActivity extends AppCompatActivity implements AdapterV
         // TODO Auto-generated method stub
         Log.d("Result", "Se ejecuta onActivityResult");
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == this.requestCode && resultCode == RESULT_OK) {
+        if (requestCode == this.requestCode1 && resultCode == RESULT_OK) {
             // Actualizar el Adapter
             dao.open();
             refrescarListaConPedidos();
+
+        }
+
+       if(requestCode == this.requestCode2 && resultCode == RESULT_OK){
+
+           // lista para traer los id de productos de un pedido
+           ArrayList<Integer> listPrueba = new ArrayList<>();
+
+           ArrayList<Integer> listaRetorno = (ArrayList<Integer>) data.getIntegerArrayListExtra("productos");
+
+
+           System.out.println("tamaños de la list obtenida del intent: " + listaRetorno.size());
+
+           dao = new PedidosDAO(this);
+           dao.open();
+           dao.cargarProductosAlPedido(listaRetorno,requestCode);
+
+           listPrueba = dao.getProductosDePedido(requestCode2); // requestCodede2 tiene el id del pedido actual
+           Toast.makeText(getApplicationContext(), "Productos Grabados con Exito en Pedido (ID:"+ Integer.toString(requestCode2)+")", Toast.LENGTH_LONG).show();
+
+           //imprimirListaProductos(listaRetorno);  // datos que vienen de la Activity ProductosToPedido
+           imprimirListaProductos(listPrueba); // datos recuperados de la BD
+
+
         }
     }
 
@@ -194,5 +227,11 @@ public class GestionPedidoActivity extends AppCompatActivity implements AdapterV
         dialog.show();
 
         return false;
+    }
+
+    void imprimirListaProductos (ArrayList<Integer> lista){
+        for(Integer p: lista){
+            System.out.println("Id recuperado de la BD" + p.toString());
+        }
     }
 }

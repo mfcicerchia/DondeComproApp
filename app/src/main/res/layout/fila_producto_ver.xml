@@ -1,32 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:longClickable="true" >
-
-        <TextView
-            android:text="Nombre: "
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvProductoLbl"
-            android:layout_weight="0.015"
-            android:textAlignment="gravity"
-            android:textSize="12sp" />
-
-        <TextView
-            android:text="prod"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvProducto"
-            android:layout_weight="1"
-            android:typeface="sans" />
-
-    </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -34,23 +11,62 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:text="Precio: "
-            android:layout_width="match_parent"
+            android:text="Nombre: "
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tvPrecioLbl"
-            android:layout_weight="6"
+            android:id="@+id/tvProductoLbl"
             android:textAlignment="gravity"
-            android:textSize="14sp" />
+            android:textSize="14dp"
+            android:textStyle="normal|bold" />
 
         <TextView
-            android:text="$$$$$"
-            android:layout_width="match_parent"
+            android:text="prod"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tvPrecio"
-            android:layout_weight="1"
+            android:id="@+id/tvProducto"
+            android:layout_weight="0.75"
             android:typeface="sans" />
 
     </LinearLayout>
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="21dp">
+
+        <TextView
+            android:text="Precio: "
+            android:layout_height="wrap_content"
+            android:id="@+id/tvDireccion"
+            android:textSize="14dp"
+            android:layout_width="100dp"
+            android:textStyle="normal|bold"
+            android:textAlignment="gravity"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:text="$$$$$"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvPrecio"
+            android:typeface="sans"
+            android:layout_width="100dp"
+            android:layout_alignBaseline="@+id/tvDireccion"
+            android:layout_alignBottom="@+id/tvDireccion"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="58dp" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/info"
+            android:id="@+id/imageButton"
+            style="@style/Widget.AppCompat.ImageButton"
+            android:backgroundTint="@color/cast_expanded_controller_ad_label_background_color"
+            android:background="@color/cast_expanded_controller_ad_container_white_stripe_color"
+            android:scaleType="fitStart" />
+
+    </RelativeLayout>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -63,7 +79,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/tvCategoriaLbl"
             android:layout_weight="0.015"
-            android:textAlignment="gravity" />
+            android:textAlignment="textStart"
+            android:textSize="16dp"
+            android:textStyle="normal|bold" />
 
         <TextView
             android:text="Cat"
@@ -71,6 +89,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/tvCategoria"
             android:layout_weight="2"
-            android:typeface="sans" />
+            android:typeface="sans"
+            android:textSize="14dp" />
     </LinearLayout>
 </LinearLayout>

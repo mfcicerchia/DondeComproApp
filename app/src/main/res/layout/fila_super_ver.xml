@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="21dp">
+
+        <TextView
+            android:text="Supermercado: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvSuperLbl"
+            android:textAlignment="gravity"
+            android:textSize="14dp"
+            android:textStyle="normal|bold" />
+
+        <TextView
+            android:text="nombreSuper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvNombreSuper"
+            android:layout_weight="1"
+            android:typeface="sans" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="21dp">
+
+        <TextView
+            android:text="Direccion:"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvDireccionLbl"
+            android:textSize="14dp"
+            android:layout_width="100dp"
+            android:textStyle="normal|bold"
+            android:textAlignment="gravity"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:id="@+id/tvDireccion"
+            android:typeface="sans"
+            android:layout_width="100dp"
+            android:text="direccion"
+            android:layout_alignBaseline="@+id/tvDireccion"
+            android:layout_alignBottom="@+id/tvDireccion"
+            android:layout_alignParentEnd="true" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="21dp">
+
+        <TextView
+            android:text="Latitud: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvLatitudLbl"
+            android:layout_weight="0.015"
+            android:textAlignment="textStart"
+            android:textSize="16dp"
+            android:textStyle="normal|bold" />
+
+        <TextView
+            android:text="latitud"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvLatitud"
+            android:layout_weight="2"
+            android:typeface="sans"
+            android:textSize="14dp" />
+
+        <TextView
+            android:text="Longitud: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvLongitudLbl"
+            android:layout_weight="0.015"
+            android:textAlignment="textStart"
+            android:textSize="16dp"
+            android:textStyle="normal|bold" />
+
+        <TextView
+            android:text="longitud"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvLongitud"
+            android:layout_weight="2"
+            android:typeface="sans"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+</LinearLayout>

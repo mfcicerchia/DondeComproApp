@@ -15,36 +15,50 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center_horizontal">
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:weightSum="1">
 
         <Button
-            android:text="Aceptar"
+            android:text="Cargar"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/btnAceptar"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:layout_weight="0.54"
+            android:textStyle="normal|bold"
+            android:textAlignment="center" />
 
         <Button
-            android:text="Cancelar"
+            android:text="Escanear"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/btnCancelar"
-            android:singleLine="true" />
+            android:layout_height="wrap_content"
+            android:id="@+id/btnEscanearProducto"
+            android:singleLine="true"
+            android:layout_weight="0.54"
+            android:textStyle="normal|bold" />
+
     </LinearLayout>
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="391dp"
-        android:id="@+id/lvProductosToPedido" />
-
-    <EditText
+   <!-- <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Name"
         android:ems="10"
-        android:id="@+id/etFilterProdToPed" />
+        android:id="@+id/etFilterProdToPed"
+        android:hint="buscar producto" />-->
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/lvProductosToPedido"
+        android:minHeight="100dp"
+        android:dividerHeight="7dp"
+        android:footerDividersEnabled="true"
+        android:headerDividersEnabled="true"
+        android:layout_weight="0.44"
+        android:background="@color/wallet_bright_foreground_holo_dark" />
+
 </LinearLayout>
 
 

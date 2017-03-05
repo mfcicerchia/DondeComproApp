@@ -8,10 +8,10 @@ public class Supermercado {
 
     private String nombre, direccion, correo;
     private  int id, telefono;
-    private  float lat, lng;
+    private  String lat, lng;
 
 
-    public Supermercado(String nombre, String direccion, String correo, int id, int telefono, float lat, float lng) {
+    public Supermercado(String nombre, String direccion, String correo, int id, int telefono, String lat, String lng) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.correo = correo;
@@ -20,6 +20,13 @@ public class Supermercado {
         this.lat = lat;
         this.lng = lng;
     }
+    public Supermercado(String nombre, String direccion, String lat, String lng) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.lat =  lat;
+        this.lng = lng;
+    }
+
 
     public String getNombre() {
         return nombre;
@@ -61,19 +68,21 @@ public class Supermercado {
         this.telefono = telefono;
     }
 
-    public float getLat() {
+    public String getLatitud() {
         return lat;
     }
 
-    public void setLat(float lat) {
+    public void setLat(String lat) {
         this.lat = lat;
     }
 
-    public float getLng() {
+    public String getLongitud() {
         return lng;
     }
 
-    public void setLng(float lng) {
+    public void setLng(String lng) {
         this.lng = lng;
     }
+
+
 }

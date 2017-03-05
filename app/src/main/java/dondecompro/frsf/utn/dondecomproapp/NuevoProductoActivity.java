@@ -38,9 +38,9 @@ public class NuevoProductoActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         if (v.getId() == R.id.btnBarCode) {
                             // launch barcode activity.
-                            Intent intent = new Intent(NuevoProductoActivity.this, CapturadorBarCodeActivity.class);
-                            intent.putExtra(CapturadorBarCodeActivity.AutoFocus, true);
-                            intent.putExtra(CapturadorBarCodeActivity.UseFlash, useFlash());
+                            Intent intent = new Intent(NuevoProductoActivity.this, CapturadorBarcodeActivity.class);
+                            intent.putExtra(CapturadorBarcodeActivity.AutoFocus, true);
+                            intent.putExtra(CapturadorBarcodeActivity.UseFlash, useFlash());
 
                             startActivityForResult(intent, RC_BARCODE_CAPTURE);
                         }
@@ -77,7 +77,7 @@ public class NuevoProductoActivity extends AppCompatActivity {
         if (requestCode == RC_BARCODE_CAPTURE) {
             if (resultCode == CommonStatusCodes.SUCCESS) {
                 if (data != null) {
-                    Barcode barcode = data.getParcelableExtra(CapturadorBarCodeActivity.BarcodeObject);
+                    Barcode barcode = data.getParcelableExtra(CapturadorBarcodeActivity.BarcodeObject);
                     textCodigoPoducto.setText(barcode.displayValue);
                     this.buscarProductoPorCodigoEAN(barcode.displayValue);
                     Log.d(TAG, "Barcode read: " + barcode.displayValue);

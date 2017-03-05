@@ -22,7 +22,11 @@
     <ListView
         android:id="@+id/lvPedidos"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"/>
+        android:layout_height="fill_parent"
+        android:footerDividersEnabled="true"
+        android:headerDividersEnabled="true"
+        android:dividerHeight="7dp"
+        style="@style/Widget.AppCompat.ListView.Menu" />
 
 
 </LinearLayout>

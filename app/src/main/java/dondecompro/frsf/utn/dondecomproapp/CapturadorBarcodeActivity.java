@@ -45,7 +45,7 @@ import dondecompro.frsf.utn.dondecomproapp.utils.vision.BarcodeTrackerFactory;
  * Created by Agustin on 22/02/2017.
  */
 
-public class CapturadorBarCodeActivity extends AppCompatActivity {
+public class CapturadorBarcodeActivity extends AppCompatActivity {
 
     private static final String TAG = "Barcode-reader";
 

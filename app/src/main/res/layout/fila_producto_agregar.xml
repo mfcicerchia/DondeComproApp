@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Nombre: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvProductoLbl"
+            android:textAlignment="gravity"
+            android:textSize="14dp"
+            android:textStyle="normal|bold" />
+
+        <TextView
+            android:text="prod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvProducto"
+            android:layout_weight="1"
+            android:typeface="sans" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="21dp">
+
+        <TextView
+            android:text="Precio: "
+            android:layout_height="wrap_content"
+            android:id="@+id/tvDireccion"
+            android:textSize="14dp"
+            android:layout_width="100dp"
+            android:textStyle="normal|bold"
+            android:textAlignment="gravity"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:text="$$$$$"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvPrecio"
+            android:typeface="sans"
+            android:layout_width="100dp"
+            android:layout_alignBaseline="@+id/tvDireccion"
+            android:layout_alignBottom="@+id/tvDireccion"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="58dp" />
+
+        <NumberPicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/numItem"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="12dp"
+            android:scrollbarSize="15dp"
+            android:scrollbarStyle="outsideInset"
+            android:saveEnabled="false"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <CheckBox
+            android:layout_height="wrap_content"
+            android:id="@+id/chboxItem"
+            android:layout_width="wrap_content"
+            android:layout_toStartOf="@+id/numItem"
+            android:layout_alignParentTop="true" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Categoria: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvCategoriaLbl"
+            android:layout_weight="0.015"
+            android:textAlignment="textStart"
+            android:textSize="16dp"
+            android:textStyle="normal|bold" />
+
+        <TextView
+            android:text="Cat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvCategoria"
+            android:layout_weight="2"
+            android:typeface="sans"
+            android:textSize="14dp" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner"
+            android:layout_weight="0.015" />
+    </LinearLayout>
+
+</LinearLayout>

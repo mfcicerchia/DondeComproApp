@@ -7,31 +7,29 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import dondecompro.frsf.utn.dondecomproapp.modelo.Producto;
+import dondecompro.frsf.utn.dondecomproapp.modelo.Supermercado;
 
 /**
  * Created by Pablo Paletto on 12/2/2017.
  */
 
-public class ProductoAdapter extends BaseAdapter  implements Filterable{
+public class SuperAdapter extends BaseAdapter  implements Filterable{
     /**Inflater**/
-    private ArrayList<Producto> items = new ArrayList<Producto>();
-    private ArrayList<Producto> itemsFiltrados = new ArrayList<>();
+    private ArrayList<Supermercado> items = new ArrayList<Supermercado>();
+    private ArrayList<Supermercado> itemsFiltrados = new ArrayList<>();
     private CustomFilter mFilter;
     private Context context;
     private LayoutInflater inflater;
 
-    ProductoAdapter(Context context, ArrayList<Producto> items){
+    SuperAdapter(Context context, ArrayList<Supermercado> items){
         this.items = items;
         this.context = context;
         this.itemsFiltrados.addAll(items);
-        this.mFilter = new CustomFilter(ProductoAdapter.this);
+        this.mFilter = new CustomFilter(SuperAdapter.this);
         inflater = LayoutInflater.from(context);
     }
 
@@ -41,7 +39,7 @@ public class ProductoAdapter extends BaseAdapter  implements Filterable{
     }
 
     @Override
-    public Producto getItem(int position) {
+    public Supermercado getItem(int position) {
         return itemsFiltrados.get(position);
     }
 
@@ -54,7 +52,7 @@ public class ProductoAdapter extends BaseAdapter  implements Filterable{
     public View getView(int position, View convertView, ViewGroup parent) {
         View fila=convertView;
         if(fila==null){
-            fila = inflater.inflate(R.layout.fila_producto, parent, false);
+            fila = inflater.inflate(R.layout.fila_super_ver, parent, false);
         }
         ViewHolder holder = (ViewHolder)fila.getTag();
         if(holder==null){
@@ -63,8 +61,10 @@ public class ProductoAdapter extends BaseAdapter  implements Filterable{
         }
 
         holder.nombre.setText(this.getItem(position).getNombre());
-        holder.precio.setText(Float.toString(this.getItem(position).getPrecio()));
-        holder.categoria.setText(this.getItem(position).getCategoria());
+        holder.direccion.setText(this.getItem(position).getDireccion());
+        holder.latitud.setText(this.getItem(position).getLatitud());
+        holder.longitud.setText(this.getItem(position).getLongitud());
+
         return (fila);
     }
 
@@ -75,22 +75,24 @@ public class ProductoAdapter extends BaseAdapter  implements Filterable{
 
     class ViewHolder{
         private TextView nombre;
-        private   TextView precio;
-        private  TextView categoria;
+        private   TextView direccion;
+        private  TextView latitud;
+        private  TextView longitud;
 
         ViewHolder(View base){
-            this.nombre = (TextView)base.findViewById(R.id.tvProducto);
-            this.precio = (TextView)base.findViewById(R.id.tvPrecio);
-            this.categoria = (TextView)base.findViewById(R.id.tvCategoria);
+            this.nombre = (TextView)base.findViewById(R.id.tvFiltroSuper);
+            this.direccion = (TextView)base.findViewById(R.id.tvDireccion);
+            this.latitud = (TextView)base.findViewById(R.id.tvLatitud);
+            this.longitud = (TextView)base.findViewById(R.id.tvLongitud);
         }
     }
 
     public class CustomFilter extends Filter{
-        private ProductoAdapter productoAdapter;
+        private SuperAdapter superAdapter;
 
-        private CustomFilter(ProductoAdapter productoAdapter){
+        private CustomFilter(SuperAdapter superAdapter){
             super();
-            this.productoAdapter = productoAdapter;
+            this.superAdapter = superAdapter;
         }
 
         @Override
@@ -102,7 +104,7 @@ public class ProductoAdapter extends BaseAdapter  implements Filterable{
             }
             else{
                 final String filterPattern = constraint.toString().toLowerCase().trim();
-                for (final Producto producto : items){
+                for (final Supermercado producto : items){
                     if (producto.getNombre().toLowerCase().contains(filterPattern)){
                         itemsFiltrados.add(producto);
                     }
@@ -117,12 +119,8 @@ public class ProductoAdapter extends BaseAdapter  implements Filterable{
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-            this.productoAdapter.notifyDataSetChanged();
+            this.superAdapter.notifyDataSetChanged();
         }
     }
 
-    @Override
-    public boolean isEnabled(int position) {
-        return super.isEnabled(position);
-    }
 }

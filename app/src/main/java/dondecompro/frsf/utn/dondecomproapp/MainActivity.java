@@ -92,12 +92,10 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_gen_pedido) {
 
             Intent i= new Intent(this,GestionPedidoActivity.class);
-            // i.putExtra("cliente",etNombreCliente.getText().toString());
-            //i.putExtra("direccion", et1.getText().toString());
             startActivity(i);
 
         } else if (id == R.id.nav_ver_pedido) {
-            Intent i= new Intent(this,ProductosToPedido.class);
+            Intent i= new Intent(this,ListarPedidosActivity.class);
             startActivity(i);
 
         } else if (id == R.id.nav_buscar_super) {

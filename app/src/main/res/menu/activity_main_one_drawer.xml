@@ -3,21 +3,22 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_nuevo_producto"
-            android:icon="@drawable/nuevo_pedido48"
-            android:title="Nuevo Producto" />
+
         <item
             android:id="@+id/nav_gen_pedido"
             android:icon="@drawable/nuevo_pedido48"
             android:title="Gestionar Pedidos" />
         <item
+            android:id="@+id/nav_nuevo_producto"
+            android:icon="@android:drawable/ic_input_add"
+            android:title="Nuevo Producto" />
+        <item
             android:id="@+id/nav_ver_pedido"
-            android:icon="@drawable/search_database"
+            android:icon="@drawable/carro_vacio48"
             android:title="Listar Pedidos" />
         <item
             android:id="@+id/nav_ver_productos"
-            android:icon="@android:drawable/ic_menu_mapmode"
+            android:icon="@android:drawable/ic_search_category_default"
             android:title="Ver Lista de Productos" />
 
         <item
