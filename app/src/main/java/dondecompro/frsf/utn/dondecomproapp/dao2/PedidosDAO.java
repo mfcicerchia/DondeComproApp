@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,7 @@ public class PedidosDAO {
 
     private String[] columnasPedido = {MySQLiteOpenHelper.TablaPedido.COLUMNA_ID, MySQLiteOpenHelper.TablaPedido.COLUMNA_NOMBRE, MySQLiteOpenHelper.TablaPedido.COLUMNA_ESTADO };
     private String [] columnasProducto = {MySQLiteOpenHelper.TablaProducto.COLUMNA_ID, MySQLiteOpenHelper.TablaProducto.COLUMNA_NOMBRE, MySQLiteOpenHelper.TablaProducto.COLUMNA_PRECIO,MySQLiteOpenHelper.TablaProducto.COLUMNA_CATEGORIA };
-    private String [] columnasPedidoTieneProducto = {MySQLiteOpenHelper.TablaPedidoTieneProducto.COLUMNA_PEDIDO_ID,MySQLiteOpenHelper.TablaPedidoTieneProducto.COLUMNA_PRODUCTO_ID};
+    private String [] columnasPedidoTieneProducto = {MySQLiteOpenHelper.TablaPedidoTieneProducto.COLUMNA_PEDIDO_ID, MySQLiteOpenHelper.TablaPedidoTieneProducto.COLUMNA_PRODUCTO_ID};
 
     public PedidosDAO(Context context) {
         dbHelper = new MySQLiteOpenHelper(context);
@@ -162,9 +163,13 @@ public class PedidosDAO {
     }
 
     /**Modificar el query para que traiga solo los de ese pedido (esta trayedo todoo ahora)*/
-    public ArrayList<Integer> getProductosDePedido(int idPedido){
+    public ArrayList<Integer> getIdProductosDePedido(int idPedido){
         ArrayList<Integer> listaIdProductos = new ArrayList<>();
-        Cursor cursor = db.query(MySQLiteOpenHelper.TablaPedidoTieneProducto.TABLA_PEDIDO_TIENE_PRODUCTO, columnasPedidoTieneProducto, Integer.toString(idPedido), null, null, null, null);
+      // Cursor cursor = db.query(MySQLiteOpenHelper.TablaPedidoTieneProducto.TABLA_PEDIDO_TIENE_PRODUCTO, columnasPedidoTieneProducto, null, null, null, null, null);
+
+        Cursor cursor  = db.rawQuery(" SELECT * " +
+                                     " FROM " + MySQLiteOpenHelper.TablaPedidoTieneProducto.TABLA_PEDIDO_TIENE_PRODUCTO +
+                                     " WHERE " + MySQLiteOpenHelper.TablaPedidoTieneProducto.COLUMNA_PEDIDO_ID + " = ? ", new String[] {Integer.toString(idPedido)});
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
@@ -173,6 +178,21 @@ public class PedidosDAO {
         }
         cursor.close();
         return listaIdProductos;
+    }
+
+    public ArrayList<Producto> getAllProductosDePedido(int idPedido){
+        ArrayList<Integer> listaIdProductos = this.getIdProductosDePedido(idPedido);
+        ArrayList<Producto> listaAllProductos = this.getAllProductos();
+        ArrayList<Producto> listaProductosRetorno = new ArrayList<Producto>();
+
+        for(Producto p: listaAllProductos){
+            for(Integer i: listaIdProductos){
+                if(p.getId()==i){
+                    listaProductosRetorno.add(p);
+                }
+            }
+        }
+        return listaProductosRetorno;
     }
 
 

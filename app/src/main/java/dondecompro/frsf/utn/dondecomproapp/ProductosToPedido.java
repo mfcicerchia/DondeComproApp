@@ -72,7 +72,7 @@ public class ProductosToPedido extends AppCompatActivity {
                     for (int i = 0; i < tam; i++) {
                         if (listViewProductos.isItemChecked(i)) {
                             producto = (Producto) listViewProductos.getItemAtPosition(i);
-                            ids.add(producto.getId());
+                            ids.add(producto.getId()); // lo que guardo en la lista, son los IDs de los producctos elegidos
                         }
                     }
                 }

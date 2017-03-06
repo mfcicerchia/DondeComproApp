@@ -61,7 +61,7 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return " Pedido ("+id+") ["+getDateTime()+"]" +
+        return " Pedido (ID:"+id+") ["+getDateTime()+"]" +
                  "\n Nombre: "+ nombre +
                  "\n Estado: "+ estado  ;
     }

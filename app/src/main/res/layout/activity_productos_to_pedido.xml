@@ -56,8 +56,8 @@
         android:dividerHeight="7dp"
         android:footerDividersEnabled="true"
         android:headerDividersEnabled="true"
-        android:layout_weight="0.44"
-        android:background="@color/wallet_bright_foreground_holo_dark" />
+        android:layout_weight="0.50"
+        android:divider="?attr/colorAccent" />
 
 </LinearLayout>
 

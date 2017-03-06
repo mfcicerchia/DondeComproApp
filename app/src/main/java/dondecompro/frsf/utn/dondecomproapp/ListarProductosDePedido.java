@@ -11,6 +11,7 @@ import java.util.List;
 
 import dondecompro.frsf.utn.dondecomproapp.dao2.PedidosDAO;
 import dondecompro.frsf.utn.dondecomproapp.modelo.Pedido;
+import dondecompro.frsf.utn.dondecomproapp.modelo.Producto;
 
 public class ListarProductosDePedido extends AppCompatActivity {
 
@@ -18,8 +19,8 @@ public class ListarProductosDePedido extends AppCompatActivity {
 
     private ListView lvListaProductosDePedido;
 
-//    ArrayAdapter<Pedido> adapter;
-    ArrayAdapter<Integer> adapter;
+
+    ArrayAdapter<Producto> adapter;
     private PedidosDAO dao;
 
     @Override
@@ -38,12 +39,13 @@ public class ListarProductosDePedido extends AppCompatActivity {
         dao = new PedidosDAO(this);
         dao.open();
         // Cargamos la lista de Pedidos de la BD y la asignamos el ListView de Pedidos
-        List<Integer> listaIdProductos = dao.getProductosDePedido(idPedido);
+        //List<Integer> listaIdProductos = dao.getIdProductosDePedido(idPedido);
+        List<Producto> listaIdProductos = dao.getAllProductosDePedido(idPedido);
         //List<Producto> listaPedidos = dao.getAllPedidos();
         dao.close();
 
 
-        adapter = new ArrayAdapter<Integer>(this, android.R.layout.simple_list_item_1, listaIdProductos);
+        adapter = new ArrayAdapter<Producto>(this, android.R.layout.simple_list_item_1, listaIdProductos);
         lvListaProductosDePedido .setAdapter(adapter);
 
 

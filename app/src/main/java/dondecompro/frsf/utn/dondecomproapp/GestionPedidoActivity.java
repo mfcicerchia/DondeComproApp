@@ -163,20 +163,21 @@ public class GestionPedidoActivity extends AppCompatActivity implements AdapterV
            // lista para traer los id de productos de un pedido
            ArrayList<Integer> listPrueba = new ArrayList<>();
 
-           ArrayList<Integer> listaRetorno = (ArrayList<Integer>) data.getIntegerArrayListExtra("productos");
+           ArrayList<Integer> listaRetorno = (ArrayList<Integer>) data.getIntegerArrayListExtra("productos"); // obtengo la lista con los IDs de productos elegidos
 
 
            System.out.println("tamaños de la list obtenida del intent: " + listaRetorno.size());
 
            dao = new PedidosDAO(this);
            dao.open();
-           dao.cargarProductosAlPedido(listaRetorno,requestCode);
-
-           listPrueba = dao.getProductosDePedido(requestCode2); // requestCodede2 tiene el id del pedido actual
+           dao.cargarProductosAlPedido(listaRetorno,requestCode); // invoco al DAO y cargo en la BD los prodctos al pedido (Tabla "pedido_tiene_producto")
            Toast.makeText(getApplicationContext(), "Productos Grabados con Exito en Pedido (ID:"+ Integer.toString(requestCode2)+")", Toast.LENGTH_LONG).show();
 
-           //imprimirListaProductos(listaRetorno);  // datos que vienen de la Activity ProductosToPedido
-           imprimirListaProductos(listPrueba); // datos recuperados de la BD
+           /**Pruebo recuperar los datos cargados*/
+          // listPrueba = dao.getIdProductosDePedido(requestCode2); // requestCodede2 tiene el id del pedido actual
+
+           imprimirListaProductos(listaRetorno);  // datos que vienen de la Activity ProductosToPedido
+           //imprimirListaProductos(listPrueba); // datos recuperados de la BD
 
 
         }
