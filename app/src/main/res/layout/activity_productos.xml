@@ -42,7 +42,11 @@
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/lvProductos" />
+            android:id="@+id/lvProductos"
+            android:dividerHeight="7dp"
+            android:footerDividersEnabled="true"
+            android:headerDividersEnabled="true"
+            android:divider="@color/colorAccent" />
     </LinearLayout>
 
 </RelativeLayout>
