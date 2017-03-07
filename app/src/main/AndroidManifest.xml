@@ -64,7 +64,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             -->
-
         </activity>
         <activity android:name=".ProductosActivity" />
         <activity android:name=".ProductosToPedido" />
@@ -75,9 +74,6 @@
         <activity android:name=".ListarPedidosActivity" />
         <activity android:name=".CapturadorBarcodeActivity" />
         <activity android:name=".ListarProductosDePedido" />
-
-
-
 
     </application>
 
