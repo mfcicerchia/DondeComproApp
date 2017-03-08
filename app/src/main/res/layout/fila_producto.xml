@@ -24,7 +24,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/tvProducto"
             android:layout_weight="1"
-            android:typeface="sans" />
+            android:typeface="sans"
+            android:textStyle="normal|bold"
+            android:textSize="16dp" />
 
     </LinearLayout>
 
@@ -48,7 +50,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/tvPrecio"
             android:layout_weight="1"
-            android:typeface="sans" />
+            android:typeface="sans"
+            android:textStyle="normal|bold"
+            android:textSize="16dp" />
 
     </LinearLayout>
 
@@ -71,6 +75,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/tvCategoria"
             android:layout_weight="2"
-            android:typeface="sans" />
+            android:typeface="sans"
+            android:textSize="16dp" />
     </LinearLayout>
 </LinearLayout>

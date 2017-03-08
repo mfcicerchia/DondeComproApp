@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "675286816145",
+    "firebase_url": "https://dondecomproapp-327a5.firebaseio.com",
+    "project_id": "dondecomproapp-327a5",
+    "storage_bucket": "dondecomproapp-327a5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:675286816145:android:e085e99039877343",
+        "android_client_info": {
+          "package_name": "dondecompro.frsf.utn.dondecomproapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "675286816145-68u5v2cu1tfd7sd592r3ve7vrs873g22.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWtNdpIj5BP7Tdzo4Crwe7BKAkRwaUloo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

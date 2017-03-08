@@ -25,6 +25,25 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+
+        <service
+            android:name=".Servicios.MyFirebaseAplicationService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".Servicios.MyFirebaseInstanceIdService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+
         <activity android:name=".InicioSplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -54,7 +73,8 @@
         <activity android:name=".NuevoProductoActivity" />
         <activity android:name=".ListarPedidosActivity" />
         <activity android:name=".CapturadorBarcodeActivity" />
-        <activity android:name=".ListarProductosDePedido"></activity>
+        <activity android:name=".ListarProductosDePedido" />
+
     </application>
 
 </manifest>
