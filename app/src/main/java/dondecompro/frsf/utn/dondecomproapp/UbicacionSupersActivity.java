@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
 import android.location.Criteria;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
@@ -38,13 +39,14 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import dondecompro.frsf.utn.dondecomproapp.dao.DondeComproDAO;
+import dondecompro.frsf.utn.dondecomproapp.utils.ClienteAPIRestFoursquare;
 
 /**
  * Created by Agustin on 15/02/2017.
  */
 
 public class UbicacionSupersActivity extends AppCompatActivity
-        implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks {
+        implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, LocationListener {
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     private static final int ZOOM_GOOGLEMAPS_INICIAL = 14;
 
@@ -53,6 +55,7 @@ public class UbicacionSupersActivity extends AppCompatActivity
     private LocationManager locationManager;
     private Location ubicacionActual;
     private DondeComproDAO dao;
+    private ClienteAPIRestFoursquare superAPIRestFoursquare;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -75,7 +78,6 @@ public class UbicacionSupersActivity extends AppCompatActivity
                 .build();
 
         this.locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
         this.askForLocationPermission();
     }
 
@@ -146,6 +148,14 @@ public class UbicacionSupersActivity extends AppCompatActivity
         try {  // Habilitar Funciones
             this.myMap.setMyLocationEnabled(true);
             this.askForEnableLocalizacion(locationManager);
+            this.locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+
+            // Traer Super Cercanos desde API Foursquare
+            //if(this.ubicacionActual != null){
+                this.superAPIRestFoursquare = new ClienteAPIRestFoursquare(UbicacionSupersActivity.this, this, this.myMap);
+                superAPIRestFoursquare.execute();
+            //}
+
             this.myMap.setMapType(GoogleMap.MAP_TYPE_NORMAL); // Asigno una vista al mapa
 //            this.agregarMarkerSupers(); TODO: Agregar marcadores
             this.myMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
@@ -278,10 +288,10 @@ public class UbicacionSupersActivity extends AppCompatActivity
 
     public Action getIndexApiAction() {
         Thing object = new Thing.Builder()
-                .setName("Ubicacion Supers") // TODO: Define a title for the content shown.
-                // TODO: Make sure this auto-generated URL is correct.
+                .setName("Ubicacion Supers")
                 .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
                 .build();
+
         return new Action.Builder(Action.TYPE_VIEW)
                 .setObject(object)
                 .setActionStatus(Action.STATUS_TYPE_COMPLETED)
@@ -307,6 +317,26 @@ public class UbicacionSupersActivity extends AppCompatActivity
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         AppIndex.AppIndexApi.end(client, getIndexApiAction());
         client.disconnect();
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        Log.v("LocationListener","Cambio de location: "+location.getLatitude()+" , "+location.getLongitude());
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+        Log.v("LocationListener","Cambio de Estado");
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+        Log.v("LocationListener","Gps Activado");
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+        Log.v("LocationListener","Gps Desactivado");
     }
 
 }

@@ -6,12 +6,9 @@ package dondecompro.frsf.utn.dondecomproapp.modelo;
 
 public class Supermercado {
 
-    private String nombre, direccion, correo;
-    private  int id, telefono;
-    private  String lat, lng;
+    private String nombre, direccion, correo, id, lat, lng, telefono;
 
-
-    public Supermercado(String nombre, String direccion, String correo, int id, int telefono, String lat, String lng) {
+    public Supermercado(String nombre, String direccion, String correo, String id, String telefono, String lat, String lng) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.correo = correo;
@@ -37,6 +34,9 @@ public class Supermercado {
     }
 
     public String getDireccion() {
+        if(direccion == null){
+            return "";
+        }
         return direccion;
     }
 
@@ -52,19 +52,22 @@ public class Supermercado {
         this.correo = correo;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
+        if(telefono == null){
+            return "";
+        }
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 

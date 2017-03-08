@@ -76,7 +76,7 @@ public class SuperDAO {
     }
 
     public void borrarSupermercado(Supermercado s) {
-        long id = s.getId();
+        String id = s.getId();
 
         db.delete(MySQLiteOpenHelper.TablaSupermercado.TABLA_SUPERMERCADO, MySQLiteOpenHelper.TablaSupermercado.COLUMNA_ID + " = " + id,
                 null);
