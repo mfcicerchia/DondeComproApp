@@ -1,0 +1,1875 @@
+{
+  "meta": {
+    "code": 200,
+    "requestId": "58bda9cedd57976ba518d0db"
+  },
+  "response": {
+    "venues": [
+      {
+        "id": "5831bc886e6075508cce7a03",
+        "name": "Supermercado El Túnel",
+        "contact": {},
+        "location": {
+          "address": "Salvador Caputto",
+          "crossStreet": "Saavedra",
+          "lat": -31.637966,
+          "lng": -60.713445,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": -31.637966,
+              "lng": -60.713445
+            }
+          ],
+          "distance": 1720,
+          "postalCode": "3000",
+          "cc": "AR",
+          "city": "Ciudad de Santa Fe",
+          "state": "Santa Fe",
+          "country": "Argentina",
+          "formattedAddress": [
+            "Salvador Caputto (Saavedra)",
+            "3000 Ciudad de Santa Fe",
+            "Santa Fe",
+            "Argentina"
+          ]
+        },
+        "categories": [
+          {
+            "id": "52f2ab2ebcbc57f1066b8b46",
+            "name": "Supermercado",
+            "pluralName": "Supermercados",
+            "shortName": "Supermercado",
+            "icon": {
+              "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/shops\/food_grocery_",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": {
+          "checkinsCount": 13,
+          "usersCount": 3,
+          "tipCount": 0
+        },
+        "allowMenuUrlEdit": true,
+        "beenHere": {
+          "lastCheckinExpiredAt": 0
+        },
+        "specials": {
+          "count": 0,
+          "items": []
+        },
+        "hereNow": {
+          "count": 0,
+          "summary": "Nadie aquí",
+          "groups": []
+        },
+        "referralId": "v-1488824783",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "532b853c498e1c780e0a595f",
+        "name": "supermercado el tunel",
+        "contact": {},
+        "location": {
+          "lat": -31.640302083273316,
+          "lng": -60.71476701768322,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": -31.640302083273316,
+              "lng": -60.71476701768322
+            }
+          ],
+          "distance": 1449,
+          "cc": "AR",
+          "city": "Ciudad de Santa Fe",
+          "state": "Santa Fe",
+          "country": "Argentina",
+          "formattedAddress": [
+            "Ciudad de Santa Fe",
+            "Santa Fe",
+            "Argentina"
+          ]
+        },
+        "categories": [
+          {
+            "id": "52f2ab2ebcbc57f1066b8b46",
+            "name": "Supermercado",
+            "pluralName": "Supermercados",
+            "shortName": "Supermercado",
+            "icon": {
+              "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/shops\/food_grocery_",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": {
+          "checkinsCount": 31,
+          "usersCount": 5,
+          "tipCount": 0
+        },
+        "allowMenuUrlEdit": true,
+        "beenHere": {
+          "lastCheckinExpiredAt": 0
+        },
+        "specials": {
+          "count": 0,
+          "items": []
+        },
+        "hereNow": {
+          "count": 0,
+          "summary": "Nadie aquí",
+          "groups": []
+        },
+        "referralId": "v-1488824783",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "4ea745cf8231a8f6a16802fc",
+        "name": "Supermercado Patricia",
+        "contact": {},
+        "location": {
+          "lat": -31.6590514,
+          "lng": -60.7136002,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": -31.6590514,
+              "lng": -60.7136002
+            }
+          ],
+          "distance": 667,
+          "cc": "AR",
+          "country": "Argentina",
+          "formattedAddress": [
+            "Argentina"
+          ]
+        },
+        "categories": [
+          {
+            "id": "4d954b0ea243a5684a65b473",
+            "name": "Tienda de autoservicio",
+            "pluralName": "Tiendas de autoservicio",
+            "shortName": "Tienda de autoservicio",
+            "icon": {
+              "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/shops\/conveniencestore_",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": {
+          "checkinsCount": 1,
+          "usersCount": 1,
+          "tipCount": 0
+        },
+        "allowMenuUrlEdit": true,
+        "beenHere": {
+          "lastCheckinExpiredAt": 0
+        },
+        "specials": {
+          "count": 0,
+          "items": []
+        },
+        "hereNow": {
+          "count": 0,
+          "summary": "Nadie aquí",
+          "groups": []
+        },
+        "referralId": "v-1488824783",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "4dfe243262848aca58a1b4e5",
+        "name": "Supermercado Sur",
+        "contact": {},
+        "location": {
+          "address": "Moreno 2456",
+          "crossStreet": "Rivadavia",
+          "lat": -31.655598816126126,
+          "lng": -60.70719329393282,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": -31.655598816126126,
+              "lng": -60.70719329393282
+            }
+          ],
+          "distance": 838,
+          "postalCode": "3000",
+          "cc": "AR",
+          "city": "Ciudad de Santa Fe",
+          "state": "Santa Fe",
+          "country": "Argentina",
+          "formattedAddress": [
+            "Moreno 2456 (Rivadavia)",
+            "3000 Ciudad de Santa Fe",
+            "Santa Fe",
+            "Argentina"
+          ]
+        },
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d1f9941735",
+            "name": "Tienda de comida y bebida",
+            "pluralName": "Tiendas de comida y bebida",
+            "shortName": "Comida y bebida",
+            "icon": {
+              "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/shops\/foodanddrink_",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": {
+          "checkinsCount": 2,
+          "usersCount": 1,
+          "tipCount": 0
+        },
+        "allowMenuUrlEdit": true,
+        "beenHere": {
+          "lastCheckinExpiredAt": 0
+        },
+        "specials": {
+          "count": 0,
+          "items": []
+        },
+        "hereNow": {
+          "count": 0,
+          "summary": "Nadie aquí",
+          "groups": []
+        },
+        "referralId": "v-1488824783",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "4ef5d7ea6da1f7b65fb154bc",
+        "name": "Supermercado Alvear",
+        "contact": {},
+        "location": {
+          "address": "Alvear",
+          "crossStreet": "Luciano Molina",
+          "lat": -31.633128171376224,
+          "lng": -60.69555264035763,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": -31.633128171376224,
+              "lng": -60.69555264035763
+            }
+          ],
+          "distance": 2943,
+          "cc": "AR",
+          "city": "Ciudad de Santa Fe",
+          "state": "Santa Fe",
+          "country": "Argentina",
+          "formattedAddress": [
+            "Alvear (Luciano Molina)",
+            "Ciudad de Santa Fe",
+            "Santa Fe",
+            "Argentina"
+          ]
+        },
+        "categories": [
+          {
+            "id": "4d954b0ea243a5684a65b473",
+            "name": "Tienda de autoservicio",
+            "pluralName": "Tiendas de autoservicio",
+            "shortName": "Tienda de autoservicio",
+            "icon": {
+              "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/shops\/conveniencestore_",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": {
+          "checkinsCount": 31,
+          "usersCount": 13,
+          "tipCount": 0
+        },
+        "allowMenuUrlEdit": true,
+        "beenHere": {
+          "lastCheckinExpiredAt": 0
+        },
+        "specials": {
+          "count": 0,
+          "items": []
+        },
+        "hereNow": {
+          "count": 0,
+          "summary": "Nadie aquí",
+          "groups": []
+        },
+        "referralId": "v-1488824783",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "4ebfb7a47beb534000375094",
+        "name": "Supermercado Patricia (Cassanello)",
+        "contact": {},
+        "location": {
+          "address": "Angel Cassanello 660",
+          "crossStreet": "entre Patricio Cullen y Antonia Godoy",
+          "lat": -31.613517329842125,
+          "lng": -60.67453980445862,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": -31.613517329842125,
+              "lng": -60.67453980445862
+            }
+          ],
+          "distance": 5897,
+          "postalCode": "3000",
+          "cc": "AR",
+          "city": "Ciudad de Santa Fe",
+          "state": "Santa Fe",
+          "country": "Argentina",
+          "formattedAddress": [
+            "Angel Cassanello 660 (entre Patricio Cullen y Antonia Godoy)",
+            "3000 Ciudad de Santa Fe",
+            "Santa Fe",
+            "Argentina"
+          ]
+        },
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d118951735",
+            "name": "Tienda de comestibles",
+            "pluralName": "Tiendas de comestibles",
+            "shortName": "Tienda de comestibles",
+            "icon": {
+              "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/shops\/food_grocery_",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": {
+          "checkinsCount": 11,
+          "usersCount": 6,
+          "tipCount": 0
+        },
+        "allowMenuUrlEdit": true,
+        "beenHere": {
+          "lastCheckinExpiredAt": 0
+        },
+        "specials": {
+          "count": 0,
+          "items": []
+        },
+        "hereNow": {
+          "count": 0,
+          "summary": "Nadie aquí",
+          "groups": []
+        },
+        "referralId": "v-1488824783",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "4d5fdf2f338bb60ca22a21bd",
+        "name": "Supermercado Alvear",
+        "contact": {},
+        "location": {
+          "address": "San Jeronimo 3000-3100",
+          "crossStreet": "Suipacha",
+          "lat": -31.638888523747546,
+          "lng": -60.70909945310412,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": -31.638888523747546,
+              "lng": -60.70909945310412
+            }
+          ],
+          "distance": 1720,
+          "postalCode": "3000",
+          "cc": "AR",
+          "city": "Ciudad de Santa Fe",
+          "state": "Santa Fe",
+          "country": "Argentina",
+          "formattedAddress": [
+            "San Jeronimo 3000-3100 (Suipacha)",
+            "3000 Ciudad de Santa Fe",
+            "Santa Fe",
+            "Argentina"
+          ]
+        },
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d1f7941735",
+            "name": "Mercado de pulgas",
+            "pluralName": "Mercados de pulgas",
+            "shortName": "Mercado de pulgas",
+            "icon": {
+              "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/shops\/fleamarket_",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": {
+          "checkinsCount": 31,
+          "usersCount": 11,
+          "tipCount": 3
+        },
+        "allowMenuUrlEdit": true,
+        "beenHere": {
+          "lastCheckinExpiredAt": 0
+        },
+        "specials": {
+          "count": 0,
+          "items": []
+        },
+        "hereNow": {
+          "count": 0,
+          "summary": "Nadie aquí",
+          "groups": []
+        },
+        "referralId": "v-1488824783",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "50217f3de4b0c8a12be4d1f4",
+        "name": "Supermercado Rivadavia",
+        "contact": {},
+        "location": {
+          "address": "Necochea 3450",
+          "crossStreet": "Balcarce",
+          "lat": -31.639588994242416,
+          "lng": -60.69951784784429,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": -31.639588994242416,
+              "lng": -60.69951784784429
+            }
+          ],
+          "distance": 2159,
+          "postalCode": "3000",
+          "cc": "AR",
+          "city": "Ciudad de Santa Fe",
+          "state": "Santa Fe",
+          "country": "Argentina",
+          "formattedAddress": [
+            "Necochea 3450 (Balcarce)",
+            "3000 Ciudad de Santa Fe",
+            "Santa Fe",
+            "Argentina"
+          ]
+        },
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d118951735",
+            "name": "Tienda de comestibles",
+            "pluralName": "Tiendas de comestibles",
+            "shortName": "Tienda de comestibles",
+            "icon": {
+              "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/shops\/food_grocery_",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": {
+          "checkinsCount": 6,
+          "usersCount": 2,
+          "tipCount": 0
+        },
+        "allowMenuUrlEdit": true,
+        "beenHere": {
+          "lastCheckinExpiredAt": 0
+        },
+        "specials": {
+          "count": 0,
+          "items": []
+        },
+        "hereNow": {
+          "count": 0,
+          "summary": "Nadie aquí",
+          "groups": []
+        },
+        "referralId": "v-1488824783",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "582b3122b244c8602be33304",
+        "name": "Supermercado Coto",
+        "contact": {},
+        "location": {
+          "address": "Rivadavia",
+          "crossStreet": "Obispo Gelabert",
+          "lat": -31.637879,
+          "lng": -60.700917,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": -31.637879,
+              "lng": -60.700917
+            }
+          ],
+          "distance": 2211,
+          "postalCode": "3000",
+          "cc": "AR",
+          "city": "Ciudad de Santa Fe",
+          "state": "Santa Fe",
+          "country": "Argentina",
+          "formattedAddress": [
+            "Rivadavia (Obispo Gelabert)",
+            "3000 Ciudad de Santa Fe",
+            "Santa Fe",
+            "Argentina"
+          ]
+        },
+        "categories": [
+          {
+            "id": "50be8ee891d4fa8dcc7199a7",
+            "name": "Mercado",
+            "pluralName": "Mercados",
+            "shortName": "Mercado",
+            "icon": {
+              "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/shops\/market_",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": {
+          "checkinsCount": 1,
+          "usersCount": 1,
+          "tipCount": 0
+        },
+        "allowMenuUrlEdit": true,
+        "beenHere": {
+          "lastCheckinExpiredAt": 0
+        },
+        "specials": {
+          "count": 0,
+          "items": []
+        },
+        "hereNow": {
+          "count": 0,
+          "summary": "Nadie aquí",
+          "groups": []
+        },
+        "referralId": "v-1488824783",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "4e5034cfd4c0b6da5d89ef7a",
+        "name": "Supermercado Kilgelmann",
+        "contact": {},
+        "location": {
+          "lat": -31.634016036987305,
+          "lng": -60.70585632324219,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": -31.634016036987305,
+              "lng": -60.70585632324219
+            }
+          ],
+          "distance": 2338,
+          "cc": "AR",
+          "country": "Argentina",
+          "formattedAddress": [
+            "Argentina"
+          ]
+        },
+        "categories": [
+          {
+            "id": "4d954b0ea243a5684a65b473",
+            "name": "Tienda de autoservicio",
+            "pluralName": "Tiendas de autoservicio",
+            "shortName": "Tienda de autoservicio",
+            "icon": {
+              "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/shops\/conveniencestore_",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": {
+          "checkinsCount": 1,
+          "usersCount": 1,
+          "tipCount": 0
+        },
+        "allowMenuUrlEdit": true,
+        "beenHere": {
+          "lastCheckinExpiredAt": 0
+        },
+        "specials": {
+          "count": 0,
+          "items": []
+        },
+        "hereNow": {
+          "count": 0,
+          "summary": "Nadie aquí",
+          "groups": []
+        },
+        "referralId": "v-1488824783",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "51d55a59498ef30e863a231f",
+        "name": "Supermercado La Pareja",
+        "contact": {},
+        "location": {
+          "lat": -31.634442310681973,
+          "lng": -60.68774733526928,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": -31.634442310681973,
+              "lng": -60.68774733526928
+            }
+          ],
+          "distance": 3374,
+          "cc": "AR",
+          "country": "Argentina",
+          "formattedAddress": [
+            "Argentina"
+          ]
+        },
+        "categories": [
+          {
+            "id": "50be8ee891d4fa8dcc7199a7",
+            "name": "Mercado",
+            "pluralName": "Mercados",
+            "shortName": "Mercado",
+            "icon": {
+              "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/shops\/market_",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": {
+          "checkinsCount": 8,
+          "usersCount": 2,
+          "tipCount": 0
+        },
+        "allowMenuUrlEdit": true,
+        "beenHere": {
+          "lastCheckinExpiredAt": 0
+        },
+        "specials": {
+          "count": 0,
+          "items": []
+        },
+        "hereNow": {
+          "count": 0,
+          "summary": "Nadie aquí",
+          "groups": []
+        },
+        "referralId": "v-1488824783",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "4f0890d2e4b0e8907ab449aa",
+        "name": "Supermercado sea - ponjas",
+        "contact": {},
+        "location": {
+          "lat": -31.6367107,
+          "lng": -60.6766876,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": -31.6367107,
+              "lng": -60.6766876
+            }
+          ],
+          "distance": 4126,
+          "cc": "AR",
+          "country": "Argentina",
+          "formattedAddress": [
+            "Argentina"
+          ]
+        },
+        "categories": [
+          {
+            "id": "4d954b0ea243a5684a65b473",
+            "name": "Tienda de autoservicio",
+            "pluralName": "Tiendas de autoservicio",
+            "shortName": "Tienda de autoservicio",
+            "icon": {
+              "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/shops\/conveniencestore_",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": {
+          "checkinsCount": 1,
+          "usersCount": 1,
+          "tipCount": 0
+        },
+        "allowMenuUrlEdit": true,
+        "beenHere": {
+          "lastCheckinExpiredAt": 0
+        },
+        "specials": {
+          "count": 0,
+          "items": []
+        },
+        "hereNow": {
+          "count": 0,
+          "summary": "Nadie aquí",
+          "groups": []
+        },
+        "referralId": "v-1488824783",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "4e50362d45ddff0031cbfa1b",
+        "name": "Supermercado Kilgelmann",
+        "contact": {},
+        "location": {
+          "lat": -31.615654352268933,
+          "lng": -60.705383600048386,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": -31.615654352268933,
+              "lng": -60.705383600048386
+            }
+          ],
+          "distance": 4302,
+          "cc": "AR",
+          "country": "Argentina",
+          "formattedAddress": [
+            "Argentina"
+          ]
+        },
+        "categories": [
+          {
+            "id": "4d954b0ea243a5684a65b473",
+            "name": "Tienda de autoservicio",
+            "pluralName": "Tiendas de autoservicio",
+            "shortName": "Tienda de autoservicio",
+            "icon": {
+              "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/shops\/conveniencestore_",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": {
+          "checkinsCount": 47,
+          "usersCount": 8,
+          "tipCount": 0
+        },
+        "allowMenuUrlEdit": true,
+        "beenHere": {
+          "lastCheckinExpiredAt": 0
+        },
+        "specials": {
+          "count": 0,
+          "items": []
+        },
+        "hereNow": {
+          "count": 0,
+          "summary": "Nadie aquí",
+          "groups": []
+        },
+        "referralId": "v-1488824783",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "5039b12ae4b0caef771e42ff",
+        "name": "Supermercado Petrelli",
+        "contact": {},
+        "location": {
+          "lat": -31.6621859954975,
+          "lng": -60.76104036576009,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": -31.6621859954975,
+              "lng": -60.76104036576009
+            }
+          ],
+          "distance": 4415,
+          "cc": "AR",
+          "country": "Argentina",
+          "formattedAddress": [
+            "Argentina"
+          ]
+        },
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d118951735",
+            "name": "Tienda de comestibles",
+            "pluralName": "Tiendas de comestibles",
+            "shortName": "Tienda de comestibles",
+            "icon": {
+              "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/shops\/food_grocery_",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": {
+          "checkinsCount": 29,
+          "usersCount": 9,
+          "tipCount": 2
+        },
+        "allowMenuUrlEdit": true,
+        "beenHere": {
+          "lastCheckinExpiredAt": 0
+        },
+        "specials": {
+          "count": 0,
+          "items": []
+        },
+        "hereNow": {
+          "count": 0,
+          "summary": "Nadie aquí",
+          "groups": []
+        },
+        "referralId": "v-1488824783",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "5815202538fa91a231a1fdd5",
+        "name": "Supermercado Ok",
+        "contact": {},
+        "location": {
+          "address": "Avenida Aristobulo Del Valle 5879",
+          "crossStreet": "Lavaise",
+          "lat": -31.613967,
+          "lng": -60.696454,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": -31.613967,
+              "lng": -60.696454
+            }
+          ],
+          "distance": 4741,
+          "postalCode": "S3004",
+          "cc": "AR",
+          "city": "La Capital",
+          "state": "Santa Fe",
+          "country": "Argentina",
+          "formattedAddress": [
+            "Avenida Aristobulo Del Valle 5879 (Lavaise)",
+            "S3004 La Capital",
+            "Santa Fe",
+            "Argentina"
+          ]
+        },
+        "categories": [
+          {
+            "id": "52f2ab2ebcbc57f1066b8b46",
+            "name": "Supermercado",
+            "pluralName": "Supermercados",
+            "shortName": "Supermercado",
+            "icon": {
+              "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/shops\/food_grocery_",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": {
+          "checkinsCount": 1,
+          "usersCount": 1,
+          "tipCount": 0
+        },
+        "allowMenuUrlEdit": true,
+        "beenHere": {
+          "lastCheckinExpiredAt": 0
+        },
+        "specials": {
+          "count": 0,
+          "items": []
+        },
+        "hereNow": {
+          "count": 0,
+          "summary": "Nadie aquí",
+          "groups": []
+        },
+        "referralId": "v-1488824783",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "4ec443f7be7bd3e184b095d2",
+        "name": "Alvear",
+        "contact": {
+          "phone": "+543424561661",
+          "formattedPhone": "+54 342 456-1661"
+        },
+        "location": {
+          "address": "4 de Enero 2230",
+          "crossStreet": "e\/Mendoza y Salta",
+          "lat": -31.64887381686222,
+          "lng": -60.71146516690992,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": -31.64887381686222,
+              "lng": -60.71146516690992
+            }
+          ],
+          "distance": 631,
+          "postalCode": "3000",
+          "cc": "AR",
+          "neighborhood": "Centro",
+          "city": "Ciudad de Santa Fe",
+          "state": "Santa Fe",
+          "country": "Argentina",
+          "formattedAddress": [
+            "4 de Enero 2230 (e\/Mendoza y Salta)",
+            "3000 Ciudad de Santa Fe",
+            "Santa Fe",
+            "Argentina"
+          ]
+        },
+        "categories": [
+          {
+            "id": "52f2ab2ebcbc57f1066b8b46",
+            "name": "Supermercado",
+            "pluralName": "Supermercados",
+            "shortName": "Supermercado",
+            "icon": {
+              "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/shops\/food_grocery_",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": {
+          "checkinsCount": 90,
+          "usersCount": 27,
+          "tipCount": 2
+        },
+        "allowMenuUrlEdit": true,
+        "beenHere": {
+          "lastCheckinExpiredAt": 0
+        },
+        "specials": {
+          "count": 0,
+          "items": []
+        },
+        "hereNow": {
+          "count": 0,
+          "summary": "Nadie aquí",
+          "groups": []
+        },
+        "referralId": "v-1488824783",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "4f2f188ee4b0118a878daa78",
+        "name": "Dar",
+        "contact": {},
+        "location": {
+          "address": "Francia 2671",
+          "crossStreet": "esq. Catamarca",
+          "lat": -31.64222822380846,
+          "lng": -60.71328628169039,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": -31.64222822380846,
+              "lng": -60.71328628169039
+            }
+          ],
+          "distance": 1253,
+          "postalCode": "3000",
+          "cc": "AR",
+          "city": "Ciudad de Santa Fe",
+          "state": "Santa Fe",
+          "country": "Argentina",
+          "formattedAddress": [
+            "Francia 2671 (esq. Catamarca)",
+            "3000 Ciudad de Santa Fe",
+            "Santa Fe",
+            "Argentina"
+          ]
+        },
+        "categories": [
+          {
+            "id": "52f2ab2ebcbc57f1066b8b46",
+            "name": "Supermercado",
+            "pluralName": "Supermercados",
+            "shortName": "Supermercado",
+            "icon": {
+              "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/shops\/food_grocery_",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": {
+          "checkinsCount": 88,
+          "usersCount": 15,
+          "tipCount": 0
+        },
+        "url": "http:\/\/www.cadenadar.com.ar",
+        "allowMenuUrlEdit": true,
+        "beenHere": {
+          "lastCheckinExpiredAt": 0
+        },
+        "specials": {
+          "count": 0,
+          "items": []
+        },
+        "hereNow": {
+          "count": 0,
+          "summary": "Nadie aquí",
+          "groups": []
+        },
+        "referralId": "v-1488824783",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "4c6ff46b9c6d6dcb62f2d07a",
+        "name": "Dar",
+        "contact": {},
+        "location": {
+          "address": "San Jerónimo 2401-2499",
+          "crossStreet": "esq. Tucumán",
+          "lat": -31.646980443321006,
+          "lng": -60.70836194813347,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": -31.646980443321006,
+              "lng": -60.70836194813347
+            }
+          ],
+          "distance": 984,
+          "postalCode": "3000",
+          "cc": "AR",
+          "city": "Ciudad de Santa Fe",
+          "state": "Santa Fe",
+          "country": "Argentina",
+          "formattedAddress": [
+            "San Jerónimo 2401-2499 (esq. Tucumán)",
+            "3000 Ciudad de Santa Fe",
+            "Santa Fe",
+            "Argentina"
+          ]
+        },
+        "categories": [
+          {
+            "id": "52f2ab2ebcbc57f1066b8b46",
+            "name": "Supermercado",
+            "pluralName": "Supermercados",
+            "shortName": "Supermercado",
+            "icon": {
+              "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/shops\/food_grocery_",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": {
+          "checkinsCount": 51,
+          "usersCount": 18,
+          "tipCount": 2
+        },
+        "allowMenuUrlEdit": true,
+        "beenHere": {
+          "lastCheckinExpiredAt": 0
+        },
+        "specials": {
+          "count": 0,
+          "items": []
+        },
+        "hereNow": {
+          "count": 0,
+          "summary": "Nadie aquí",
+          "groups": []
+        },
+        "referralId": "v-1488824783",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "4f03910a823162ada5ebea19",
+        "name": "Kilgelmann Supermercado",
+        "contact": {},
+        "location": {
+          "address": "General Paz",
+          "crossStreet": "Pedro Ferrere",
+          "lat": -31.62868207889964,
+          "lng": -60.69194490449322,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": -31.62868207889964,
+              "lng": -60.69194490449322
+            }
+          ],
+          "distance": 3542,
+          "cc": "AR",
+          "city": "Ciudad de Santa Fe",
+          "state": "Santa Fe",
+          "country": "Argentina",
+          "formattedAddress": [
+            "General Paz (Pedro Ferrere)",
+            "Ciudad de Santa Fe",
+            "Santa Fe",
+            "Argentina"
+          ]
+        },
+        "categories": [
+          {
+            "id": "4d954b0ea243a5684a65b473",
+            "name": "Tienda de autoservicio",
+            "pluralName": "Tiendas de autoservicio",
+            "shortName": "Tienda de autoservicio",
+            "icon": {
+              "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/shops\/conveniencestore_",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": {
+          "checkinsCount": 19,
+          "usersCount": 8,
+          "tipCount": 0
+        },
+        "allowMenuUrlEdit": true,
+        "beenHere": {
+          "lastCheckinExpiredAt": 0
+        },
+        "specials": {
+          "count": 0,
+          "items": []
+        },
+        "hereNow": {
+          "count": 0,
+          "summary": "Nadie aquí",
+          "groups": []
+        },
+        "referralId": "v-1488824783",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "4ff99c7ae4b0956dd61f1566",
+        "name": "Supermercados Kilgelmann",
+        "contact": {},
+        "location": {
+          "address": "Blas Parera 7700",
+          "lat": -31.58509471791307,
+          "lng": -60.726221946375375,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": -31.58509471791307,
+              "lng": -60.726221946375375
+            }
+          ],
+          "distance": 7659,
+          "postalCode": "3000",
+          "cc": "AR",
+          "city": "Ciudad de Santa Fe",
+          "state": "Santa Fe",
+          "country": "Argentina",
+          "formattedAddress": [
+            "Blas Parera 7700",
+            "3000 Ciudad de Santa Fe",
+            "Santa Fe",
+            "Argentina"
+          ]
+        },
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d1f9941735",
+            "name": "Tienda de comida y bebida",
+            "pluralName": "Tiendas de comida y bebida",
+            "shortName": "Comida y bebida",
+            "icon": {
+              "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/shops\/foodanddrink_",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": {
+          "checkinsCount": 15,
+          "usersCount": 5,
+          "tipCount": 1
+        },
+        "allowMenuUrlEdit": true,
+        "beenHere": {
+          "lastCheckinExpiredAt": 0
+        },
+        "specials": {
+          "count": 0,
+          "items": []
+        },
+        "hereNow": {
+          "count": 0,
+          "summary": "Nadie aquí",
+          "groups": []
+        },
+        "referralId": "v-1488824783",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "53a88ba8498e4738a13dc792",
+        "name": "Supermercados \"El Túnel\"",
+        "contact": {},
+        "location": {
+          "lat": -31.58668915552742,
+          "lng": -60.72572265417691,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": -31.58668915552742,
+              "lng": -60.72572265417691
+            }
+          ],
+          "distance": 7477,
+          "cc": "AR",
+          "city": "Santo Tomé",
+          "state": "Santa Fe",
+          "country": "Argentina",
+          "formattedAddress": [
+            "Santo Tomé",
+            "Santa Fe",
+            "Argentina"
+          ]
+        },
+        "categories": [
+          {
+            "id": "52f2ab2ebcbc57f1066b8b42",
+            "name": "Hipermercado",
+            "pluralName": "Hipermercados",
+            "shortName": "Hipermercado",
+            "icon": {
+              "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/shops\/default_",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": {
+          "checkinsCount": 1,
+          "usersCount": 1,
+          "tipCount": 0
+        },
+        "allowMenuUrlEdit": true,
+        "beenHere": {
+          "lastCheckinExpiredAt": 0
+        },
+        "specials": {
+          "count": 0,
+          "items": []
+        },
+        "hereNow": {
+          "count": 0,
+          "summary": "Nadie aquí",
+          "groups": []
+        },
+        "referralId": "v-1488824783",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "544658b7498e71ae5fafa14e",
+        "name": "Supermercado Willi",
+        "contact": {},
+        "location": {
+          "lat": -31.521764755249023,
+          "lng": -60.682228088378906,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": -31.521764755249023,
+              "lng": -60.682228088378906
+            }
+          ],
+          "distance": 14981,
+          "cc": "AR",
+          "country": "Argentina",
+          "formattedAddress": [
+            "Argentina"
+          ]
+        },
+        "categories": [
+          {
+            "id": "52f2ab2ebcbc57f1066b8b42",
+            "name": "Hipermercado",
+            "pluralName": "Hipermercados",
+            "shortName": "Hipermercado",
+            "icon": {
+              "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/shops\/default_",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": {
+          "checkinsCount": 1,
+          "usersCount": 1,
+          "tipCount": 0
+        },
+        "allowMenuUrlEdit": true,
+        "beenHere": {
+          "lastCheckinExpiredAt": 0
+        },
+        "specials": {
+          "count": 0,
+          "items": []
+        },
+        "hereNow": {
+          "count": 0,
+          "summary": "Nadie aquí",
+          "groups": []
+        },
+        "referralId": "v-1488824783",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "5006b27fe4b0f0499dbe166f",
+        "name": "El Tunel Supermercado",
+        "contact": {},
+        "location": {
+          "address": "Avellaneda",
+          "crossStreet": "Belgrano",
+          "lat": -31.66291697330361,
+          "lng": -60.760506906123034,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": -31.66291697330361,
+              "lng": -60.760506906123034
+            }
+          ],
+          "distance": 4385,
+          "postalCode": "3016",
+          "cc": "AR",
+          "city": "Santo Tomé",
+          "state": "Santa Fe",
+          "country": "Argentina",
+          "formattedAddress": [
+            "Avellaneda (Belgrano)",
+            "3016 Santo Tome",
+            "Santa Fe",
+            "Argentina"
+          ]
+        },
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d118951735",
+            "name": "Tienda de comestibles",
+            "pluralName": "Tiendas de comestibles",
+            "shortName": "Tienda de comestibles",
+            "icon": {
+              "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/shops\/food_grocery_",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": {
+          "checkinsCount": 23,
+          "usersCount": 7,
+          "tipCount": 0
+        },
+        "allowMenuUrlEdit": true,
+        "beenHere": {
+          "lastCheckinExpiredAt": 0
+        },
+        "specials": {
+          "count": 0,
+          "items": []
+        },
+        "hereNow": {
+          "count": 0,
+          "summary": "Nadie aquí",
+          "groups": []
+        },
+        "referralId": "v-1488824783",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "4ed255ad0e01f1a8821af4f0",
+        "name": "Jk Kilgelmann Supermercado",
+        "contact": {},
+        "location": {
+          "lat": -31.61358240996726,
+          "lng": -60.703993724782414,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": -31.61358240996726,
+              "lng": -60.703993724782414
+            }
+          ],
+          "distance": 4557,
+          "cc": "AR",
+          "country": "Argentina",
+          "formattedAddress": [
+            "Argentina"
+          ]
+        },
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d118951735",
+            "name": "Tienda de comestibles",
+            "pluralName": "Tiendas de comestibles",
+            "shortName": "Tienda de comestibles",
+            "icon": {
+              "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/shops\/food_grocery_",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": {
+          "checkinsCount": 16,
+          "usersCount": 9,
+          "tipCount": 3
+        },
+        "allowMenuUrlEdit": true,
+        "beenHere": {
+          "lastCheckinExpiredAt": 0
+        },
+        "specials": {
+          "count": 0,
+          "items": []
+        },
+        "hereNow": {
+          "count": 0,
+          "summary": "Nadie aquí",
+          "groups": []
+        },
+        "referralId": "v-1488824783",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "4eac1cb1cc217eb08f090430",
+        "name": "Supermercado Sol de Sauce",
+        "contact": {},
+        "location": {
+          "lat": -31.766807556152344,
+          "lng": -60.83504104614258,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": -31.766807556152344,
+              "lng": -60.83504104614258
+            }
+          ],
+          "distance": 16956,
+          "cc": "AR",
+          "country": "Argentina",
+          "formattedAddress": [
+            "Argentina"
+          ]
+        },
+        "categories": [
+          {
+            "id": "4d954b0ea243a5684a65b473",
+            "name": "Tienda de autoservicio",
+            "pluralName": "Tiendas de autoservicio",
+            "shortName": "Tienda de autoservicio",
+            "icon": {
+              "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/shops\/conveniencestore_",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": {
+          "checkinsCount": 1,
+          "usersCount": 1,
+          "tipCount": 1
+        },
+        "allowMenuUrlEdit": true,
+        "beenHere": {
+          "lastCheckinExpiredAt": 0
+        },
+        "specials": {
+          "count": 0,
+          "items": []
+        },
+        "hereNow": {
+          "count": 0,
+          "summary": "Nadie aquí",
+          "groups": []
+        },
+        "referralId": "v-1488824783",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "50a3fcfbe4b07d69fc1354a1",
+        "name": "Alvear",
+        "contact": {
+          "phone": "+543424554334",
+          "formattedPhone": "+54 342 455-4334"
+        },
+        "location": {
+          "address": "Alvear 3919",
+          "crossStreet": "e\/L. Molinas y Dgo. Silva",
+          "lat": -31.633142520095674,
+          "lng": -60.695467551233676,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": -31.633142520095674,
+              "lng": -60.695467551233676
+            }
+          ],
+          "distance": 2947,
+          "postalCode": "3000",
+          "cc": "AR",
+          "neighborhood": "Candioti",
+          "city": "Ciudad de Santa Fe",
+          "state": "Santa Fe",
+          "country": "Argentina",
+          "formattedAddress": [
+            "Alvear 3919 (e\/L. Molinas y Dgo. Silva)",
+            "3000 Ciudad de Santa Fe",
+            "Santa Fe",
+            "Argentina"
+          ]
+        },
+        "categories": [
+          {
+            "id": "52f2ab2ebcbc57f1066b8b46",
+            "name": "Supermercado",
+            "pluralName": "Supermercados",
+            "shortName": "Supermercado",
+            "icon": {
+              "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/shops\/food_grocery_",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": {
+          "checkinsCount": 17,
+          "usersCount": 9,
+          "tipCount": 0
+        },
+        "url": "http:\/\/www.super-alvear.com.ar",
+        "allowMenuUrlEdit": true,
+        "beenHere": {
+          "lastCheckinExpiredAt": 0
+        },
+        "specials": {
+          "count": 0,
+          "items": []
+        },
+        "hereNow": {
+          "count": 0,
+          "summary": "Nadie aquí",
+          "groups": []
+        },
+        "referralId": "v-1488824783",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "4ebfba127beb53400037960f",
+        "name": "Alvear",
+        "contact": {
+          "phone": "+543424601964",
+          "formattedPhone": "+54 342 460-1964"
+        },
+        "location": {
+          "address": "Av. Gral Paz 6800",
+          "crossStreet": "Estanislao Zeballos",
+          "lat": -31.609028876284498,
+          "lng": -60.67738438821376,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": -31.609028876284498,
+              "lng": -60.67738438821376
+            }
+          ],
+          "distance": 6118,
+          "postalCode": "3000",
+          "cc": "AR",
+          "city": "Ciudad de Santa Fe",
+          "state": "Santa Fe",
+          "country": "Argentina",
+          "formattedAddress": [
+            "Av. Gral Paz 6800 (Estanislao Zeballos)",
+            "3000 Ciudad de Santa Fe",
+            "Santa Fe",
+            "Argentina"
+          ]
+        },
+        "categories": [
+          {
+            "id": "52f2ab2ebcbc57f1066b8b46",
+            "name": "Supermercado",
+            "pluralName": "Supermercados",
+            "shortName": "Supermercado",
+            "icon": {
+              "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/shops\/food_grocery_",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": {
+          "checkinsCount": 60,
+          "usersCount": 21,
+          "tipCount": 1
+        },
+        "allowMenuUrlEdit": true,
+        "beenHere": {
+          "lastCheckinExpiredAt": 0
+        },
+        "specials": {
+          "count": 0,
+          "items": []
+        },
+        "hereNow": {
+          "count": 0,
+          "summary": "Nadie aquí",
+          "groups": []
+        },
+        "referralId": "v-1488824783",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "4efb4b1a6da1f7b6646e549d",
+        "name": "Vital supermercado",
+        "contact": {},
+        "location": {
+          "address": "Ruta 11",
+          "lat": -31.573178117412947,
+          "lng": -60.72975108230115,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": -31.573178117412947,
+              "lng": -60.72975108230115
+            }
+          ],
+          "distance": 9019,
+          "cc": "AR",
+          "country": "Argentina",
+          "formattedAddress": [
+            "Ruta 11",
+            "Argentina"
+          ]
+        },
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d1f6941735",
+            "name": "Gran tienda",
+            "pluralName": "Tiendas por departamentos",
+            "shortName": "Gran tienda",
+            "icon": {
+              "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/shops\/departmentstore_",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": {
+          "checkinsCount": 29,
+          "usersCount": 15,
+          "tipCount": 0
+        },
+        "allowMenuUrlEdit": true,
+        "beenHere": {
+          "lastCheckinExpiredAt": 0
+        },
+        "specials": {
+          "count": 0,
+          "items": []
+        },
+        "hereNow": {
+          "count": 0,
+          "summary": "Nadie aquí",
+          "groups": []
+        },
+        "referralId": "v-1488824783",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "4ce1bf9b41ed224b57f7eb3c",
+        "name": "Manasseri Supermercado",
+        "contact": {},
+        "location": {
+          "lat": -31.605911,
+          "lng": -60.665977,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": -31.605911,
+              "lng": -60.665977
+            }
+          ],
+          "distance": 7069,
+          "cc": "AR",
+          "country": "Argentina",
+          "formattedAddress": [
+            "Argentina"
+          ]
+        },
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d118951735",
+            "name": "Tienda de comestibles",
+            "pluralName": "Tiendas de comestibles",
+            "shortName": "Tienda de comestibles",
+            "icon": {
+              "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/shops\/food_grocery_",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": {
+          "checkinsCount": 3,
+          "usersCount": 1,
+          "tipCount": 0
+        },
+        "allowMenuUrlEdit": true,
+        "beenHere": {
+          "lastCheckinExpiredAt": 0
+        },
+        "specials": {
+          "count": 0,
+          "items": []
+        },
+        "hereNow": {
+          "count": 0,
+          "summary": "Nadie aquí",
+          "groups": []
+        },
+        "referralId": "v-1488824783",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "4d9b772bad3bf04d44b41da2",
+        "name": "Supermercado Paraná",
+        "contact": {},
+        "location": {
+          "address": "Colón, 600",
+          "crossStreet": "Misiones",
+          "lat": -31.721097491732802,
+          "lng": -60.521699424119795,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": -31.721097491732802,
+              "lng": -60.521699424119795
+            }
+          ],
+          "distance": 19859,
+          "cc": "AR",
+          "city": "Paraná",
+          "state": "Entre Ríos",
+          "country": "Argentina",
+          "formattedAddress": [
+            "Colón, 600 (Misiones)",
+            "Paraná",
+            "Entre Ríos",
+            "Argentina"
+          ]
+        },
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d1f9941735",
+            "name": "Tienda de comida y bebida",
+            "pluralName": "Tiendas de comida y bebida",
+            "shortName": "Comida y bebida",
+            "icon": {
+              "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/shops\/foodanddrink_",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": {
+          "checkinsCount": 3,
+          "usersCount": 2,
+          "tipCount": 0
+        },
+        "allowMenuUrlEdit": true,
+        "beenHere": {
+          "lastCheckinExpiredAt": 0
+        },
+        "specials": {
+          "count": 0,
+          "items": []
+        },
+        "hereNow": {
+          "count": 0,
+          "summary": "Nadie aquí",
+          "groups": []
+        },
+        "referralId": "v-1488824783",
+        "venueChains": [],
+        "hasPerk": false
+      }
+    ]
+  }
+}
