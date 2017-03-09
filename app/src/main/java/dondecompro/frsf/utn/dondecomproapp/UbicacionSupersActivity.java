@@ -9,7 +9,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
 import android.location.Criteria;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
@@ -29,6 +28,7 @@ import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -36,9 +36,13 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+
 import dondecompro.frsf.utn.dondecomproapp.dao.DondeComproDAO;
+import dondecompro.frsf.utn.dondecomproapp.modelo.Supermercado;
 import dondecompro.frsf.utn.dondecomproapp.utils.ClienteAPIRestFoursquare;
 
 /**
@@ -47,16 +51,23 @@ import dondecompro.frsf.utn.dondecomproapp.utils.ClienteAPIRestFoursquare;
 
 public class UbicacionSupersActivity extends AppCompatActivity
         implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, LocationListener {
+    private static final String TAG = "UbicacionSupersActivity";
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     private static final int ZOOM_GOOGLEMAPS_INICIAL = 14;
 
     private GoogleMap myMap;
+    private ArrayList<Marker> listaMarkers;
+    private ArrayList<Supermercado> listaSupermercados;
     private GoogleApiClient client;
     private LocationManager locationManager;
     private Location ubicacionActual;
     private DondeComproDAO dao;
     private ClienteAPIRestFoursquare superAPIRestFoursquare;
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +75,7 @@ public class UbicacionSupersActivity extends AppCompatActivity
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        this.listaMarkers = new ArrayList<Marker>();
 
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API)
                 .addConnectionCallbacks(this)
@@ -143,21 +155,14 @@ public class UbicacionSupersActivity extends AppCompatActivity
         }
     }
 
-
+    /**
+     * Contiene las funciones principales para iniciar el mapa
+     */
     private void iniciarMapa() {
         try {  // Habilitar Funciones
             this.myMap.setMyLocationEnabled(true);
-            this.askForEnableLocalizacion(locationManager);
-            this.locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
-
-            // Traer Super Cercanos desde API Foursquare
-            //if(this.ubicacionActual != null){
-                this.superAPIRestFoursquare = new ClienteAPIRestFoursquare(UbicacionSupersActivity.this, this, this.myMap);
-                superAPIRestFoursquare.execute();
-            //}
-
+            this.askForEnableLocalizacion();
             this.myMap.setMapType(GoogleMap.MAP_TYPE_NORMAL); // Asigno una vista al mapa
-//            this.agregarMarkerSupers(); TODO: Agregar marcadores
             this.myMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
                 @Override
                 public void onMapLongClick(LatLng latLng) {
@@ -182,10 +187,8 @@ public class UbicacionSupersActivity extends AppCompatActivity
     /**
      * Preguntar si se puede habilitar localizacion
      */
-    private void askForEnableLocalizacion(LocationManager locationManager) {
-        boolean isGPS = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-
-        if (!isGPS) { // Si esta inhabilitado el GPS, pruebo habilitarlo con el usuario
+    private void askForEnableLocalizacion() {
+        if (!this.isGPS()) { // Si esta inhabilitado el GPS, pruebo habilitarlo con el usuario
             AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(UbicacionSupersActivity.this, R.style.myDialog));
             builder.setTitle("Habilitar Localización");
             builder.setMessage("¿Permite habilitar localizacion?");
@@ -217,6 +220,7 @@ public class UbicacionSupersActivity extends AppCompatActivity
         this.ubicacionActual = LocationServices.FusedLocationApi.getLastLocation(this.client);
         Log.v("onConnected","acercarToLocalizacion");
         this.acercarToLocalizacion();
+        this.agregarMarkerSupers();
     }
 
     @Override
@@ -224,8 +228,10 @@ public class UbicacionSupersActivity extends AppCompatActivity
         Log.v("onConnectionSuspended","Conexion Suspendida");
     }
 
+    /**
+     *
+     */
     private void acercarToLocalizacion() {
-
         if (this.ubicacionActual != null) {
             LatLng ubicacionActualLatLng = new LatLng(this.ubicacionActual.getLatitude(), this.ubicacionActual.getLongitude());
             Log.v("Ubicacion Actual", ubicacionActualLatLng.toString());
@@ -256,34 +262,52 @@ public class UbicacionSupersActivity extends AppCompatActivity
         Log.v("GPS", "No se puede acercar");
     }
 
+    /**
+     * Traer Super Cercanos desde API Foursquare
+     */
     private void agregarMarkerSupers(){
-        try{
-            this.dao = new DondeComproDAO(this);
-            this.dao.open();
-            Cursor supersCursor = dao.getAllSupermercados();
-
-            //Nos aseguramos de que existe al menos un registro
-            if (supersCursor.moveToFirst()) {
-                //Recorremos el cursor hasta que no haya más registros
-                do {
-                    String codigo = supersCursor.getString(0); //TODO: Esta funcion es del DAO.
-                    String nombre = supersCursor.getString(1);
-                    String direccion = supersCursor.getString(2);
-                    String latitud = supersCursor.getString(3);
-                    String longitud = supersCursor.getString(4);
-                    myMap.addMarker( new MarkerOptions()
-                            .position(new LatLng(Double.parseDouble(latitud),Double.parseDouble(longitud)))
-                            .title(nombre)
-                            .snippet("Direccion: "+direccion)
-                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_googlemaps_supers_agregar)));
-
-                } while(supersCursor.moveToNext());
+        if(this.ubicacionActual != null && this.listaMarkers != null){
+            if(this.listaMarkers.isEmpty()){
+                this.superAPIRestFoursquare = new ClienteAPIRestFoursquare(UbicacionSupersActivity.this, this, this.myMap, this.ubicacionActual,
+                        new ClienteAPIRestFoursquare.AsyncTaskResponse(){
+                            @Override
+                            public void processFinish(ArrayList<Supermercado> listaSupermecadosOutput, ArrayList<Marker> listaMarkerOutput){
+                                listaMarkers = listaMarkerOutput;
+                                listaSupermercados = listaSupermecadosOutput;
+                            }
+                        });
+                superAPIRestFoursquare.execute();
             }
-            this.dao.close();
-
-        }catch (SQLiteException exception){
-            Toast.makeText(this.getApplicationContext(), "Error DB al traer Supers", Toast.LENGTH_LONG).show();
         }
+
+
+//        try{
+//            this.dao = new DondeComproDAO(this);
+//            this.dao.open();
+//            Cursor supersCursor = dao.getAllSupermercados();
+//
+//            //Nos aseguramos de que existe al menos un registro
+//            if (supersCursor.moveToFirst()) {
+//                //Recorremos el cursor hasta que no haya más registros
+//                do {
+//                    String codigo = supersCursor.getString(0);
+//                    String nombre = supersCursor.getString(1);
+//                    String direccion = supersCursor.getString(2);
+//                    String latitud = supersCursor.getString(3);
+//                    String longitud = supersCursor.getString(4);
+//                    myMap.addMarker( new MarkerOptions()
+//                            .position(new LatLng(Double.parseDouble(latitud),Double.parseDouble(longitud)))
+//                            .title(nombre)
+//                            .snippet("Direccion: "+direccion)
+//                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_googlemaps_supers_agregar)));
+//
+//                } while(supersCursor.moveToNext());
+//            }
+//            this.dao.close();
+//
+//        }catch (SQLiteException exception){
+//            Toast.makeText(this.getApplicationContext(), "Error DB al traer Supers", Toast.LENGTH_LONG).show();
+//        }
     }
 
     public Action getIndexApiAction() {
@@ -298,10 +322,10 @@ public class UbicacionSupersActivity extends AppCompatActivity
                 .build();
     }
 
+
     @Override
     public void onStart() {
         super.onStart();
-
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client.connect();
@@ -312,7 +336,6 @@ public class UbicacionSupersActivity extends AppCompatActivity
     @Override
     public void onStop() {
         super.onStop();
-
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         AppIndex.AppIndexApi.end(client, getIndexApiAction());
@@ -320,23 +343,30 @@ public class UbicacionSupersActivity extends AppCompatActivity
     }
 
     @Override
+    protected void onDestroy() {
+        if(this.isGPS()){
+            Toast.makeText(this.getApplicationContext(), "Recuerde desactivar su GPS para ahorrar bateria", Toast.LENGTH_SHORT).show();
+        }
+        super.onDestroy();
+    }
+
+    /**
+     * Devuelve el estado actual del GPS
+     * @return estado del GPS
+     */
+    private boolean isGPS(){
+        if(locationManager != null){
+            return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        }
+        Log.v(UbicacionSupersActivity.TAG,"isGPS(): locationManager is null");
+        return false;
+    }
+
+    @Override
     public void onLocationChanged(Location location) {
+        Toast.makeText(this.getApplicationContext(), "Cambio de location: "+location.getLatitude()+" , "+location.getLongitude(), Toast.LENGTH_SHORT).show();
         Log.v("LocationListener","Cambio de location: "+location.getLatitude()+" , "+location.getLongitude());
     }
 
-    @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
-        Log.v("LocationListener","Cambio de Estado");
-    }
-
-    @Override
-    public void onProviderEnabled(String provider) {
-        Log.v("LocationListener","Gps Activado");
-    }
-
-    @Override
-    public void onProviderDisabled(String provider) {
-        Log.v("LocationListener","Gps Desactivado");
-    }
 
 }

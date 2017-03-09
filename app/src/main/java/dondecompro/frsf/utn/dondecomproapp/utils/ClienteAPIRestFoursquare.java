@@ -44,25 +44,37 @@ public class ClienteAPIRestFoursquare extends AsyncTask<Void, Void, Void> {
     private final String API_VERSION = "20170101";
 
     private ArrayList<Supermercado> listaSupermecados;
+    private ArrayList<Marker> listaMarker;
     private JSONObject jsonResponse;
     private ProgressDialog dialogoProgreso;
 
     private Context contexto;
     private Activity activity;
+    private Location localizacion;
     private GoogleMap mapa;
+    public AsyncTaskResponse delegate = null;
 
-    public ClienteAPIRestFoursquare(Context contexto, Activity activity, GoogleMap mapa) {
+    public ClienteAPIRestFoursquare(Context contexto, Activity activity, GoogleMap mapa, Location location, AsyncTaskResponse delegate) {
         this.contexto = contexto;
         this.activity = activity;
         this.mapa = mapa;
+        this.localizacion = location;
+        this.delegate = delegate;
         this.listaSupermecados = new ArrayList<Supermercado>();
+        this.listaMarker = new ArrayList<Marker>();
+    }
+
+    // you may separate this or combined to caller class.
+    public interface AsyncTaskResponse {
+        void processFinish(ArrayList<Supermercado> listaSupermecadosOutput, ArrayList<Marker> listaMarkerOutput);
     }
 
     @Override
     protected Void doInBackground(Void... params) {
+        //TODO: Ver cachear la respuesta del API.Si no hay conexion cargar la cacheada.
 
         String urlString = this.URL+"query=Supermercado"
-                +"&ll=-31.653307,-60.7156267"
+                +"&ll="+this.localizacion.getLatitude()+","+this.localizacion.getLongitude() //Ejemlo: "-31.653307" "-60.7156267"
                 +"&client_id="+this.CLIENT_ID
                 +"&client_secret="+this.CLIENT_SECRET
                 +"&v="+this.API_VERSION;
@@ -108,11 +120,13 @@ public class ClienteAPIRestFoursquare extends AsyncTask<Void, Void, Void> {
             }
 
             for(Supermercado supermercado : this.listaSupermecados){
-                this.mapa.addMarker(new MarkerOptions().position(new LatLng(Double.valueOf(supermercado.getLatitud()),Double.valueOf(supermercado.getLongitud())))
+                this.listaMarker.add(this.mapa.addMarker(new MarkerOptions().position(new LatLng(Double.valueOf(supermercado.getLatitud()),Double.valueOf(supermercado.getLongitud())))
                         .title(supermercado.getNombre())
                         .snippet("Contacto: "+supermercado.getDireccion()+" . "+supermercado.getTelefono())
-                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))));
             }
+
+            this.delegate.processFinish(this.listaSupermecados,this.listaMarker);
 
         } catch (JSONException e) {
             e.printStackTrace();
