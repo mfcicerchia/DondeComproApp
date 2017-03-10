@@ -1,8 +1,14 @@
 package dondecompro.frsf.utn.dondecomproapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +22,13 @@ import com.google.android.gms.vision.barcode.Barcode;
 import dondecompro.frsf.utn.dondecomproapp.utils.WebScrapingProductosEAN;
 
 public class NuevoProductoActivity extends AppCompatActivity {
+    private static final String TAG = "NuevoProductoActivity";
+    private final float SENSOR_LIGHT_ILUMINACION_ESTANDAR = 30;
+
+    private SensorManager sensorManager;
+    private Sensor sensorLight;
+    private SensorEventListener sensorEventListener;
+    private float unidadesIluminacionActual = 100;
 
     private TextView textTitulo;
     private TextView textCodigoPoducto;
@@ -23,20 +36,19 @@ public class NuevoProductoActivity extends AppCompatActivity {
     private ImageView imgViewProducto;
 
     private static final int RC_BARCODE_CAPTURE = 9001;
-    private static final String TAG = "NuevoProductoActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo_producto);
 
-        textTitulo = (TextView)findViewById(R.id.textTitle);
-        textCodigoPoducto = (TextView)findViewById(R.id.textValorLeido);
-        textNombreProducto = (TextView) findViewById(R.id.textNombreProducto);
-        imgViewProducto = (ImageView) findViewById(R.id.imgViewProducto);
+        this.textTitulo = (TextView) findViewById(R.id.textTitle);
+        this.textCodigoPoducto = (TextView) findViewById(R.id.textValorLeido);
+        this.textNombreProducto = (TextView) findViewById(R.id.textNombreProducto);
+        this.imgViewProducto = (ImageView) findViewById(R.id.imgViewProducto);
 
-        findViewById(R.id.btnBarCode).setOnClickListener(
-                new View.OnClickListener(){
+        this.findViewById(R.id.btnBarCode).setOnClickListener(
+                new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if (v.getId() == R.id.btnBarCode) {
@@ -50,6 +62,36 @@ public class NuevoProductoActivity extends AppCompatActivity {
                     }
                 }
         );
+        // Administrador de Sensores y Sensor de luz
+        this.sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        if (this.sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT) != null) {
+            this.sensorLight = this.sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+        }
+
+        // Seteo de configuracion de luz en pantalla de modo manual.
+        int brightnessMode = 0;
+        try {
+            brightnessMode = Settings.System.getInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS_MODE);
+            if (brightnessMode == Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC) {
+                Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS_MODE, Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
+            }
+        } catch (Settings.SettingNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        this.sensorEventListener = new SensorEventListener() {
+            @Override
+            public void onAccuracyChanged(Sensor sensor, int accuracy) {
+            }
+
+            @Override
+            public void onSensorChanged(SensorEvent event) {
+                if(event.sensor.getType() == Sensor.TYPE_LIGHT){
+                    unidadesIluminacionActual = event.values[0];
+                    Log.v(NuevoProductoActivity.TAG,"Sensor LIGHT: "+unidadesIluminacionActual);
+                }
+            }
+        };
     }
 
 
@@ -98,7 +140,9 @@ public class NuevoProductoActivity extends AppCompatActivity {
     }
 
     private boolean useFlash(){
-        //TODO: Hacer que encienda flash
+        if(this.unidadesIluminacionActual < this.SENSOR_LIGHT_ILUMINACION_ESTANDAR){
+            return true;
+        }
         return false;
     }
 
@@ -107,4 +151,28 @@ public class NuevoProductoActivity extends AppCompatActivity {
         tareaAsincronica.execute();
 
     }
+
+    @Override
+    protected void onPause() {
+        // Be sure to unregister the sensor when the activity pauses.
+        //This prevents a sensor from continually sensing data and draining the battery
+        super.onPause();
+        this.sensorManager.unregisterListener(this.sensorEventListener);
+    }
+
+    @Override
+    protected void onResume() {
+        // Register a listener for the sensor.
+        super.onResume();
+        this.sensorManager.registerListener(this.sensorEventListener, this.sensorLight, SensorManager.SENSOR_DELAY_FASTEST);
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (this.sensorLight != null) {
+            this.sensorManager.unregisterListener(this.sensorEventListener);
+        }
+        super.onDestroy();
+    }
+
 }

@@ -39,6 +39,12 @@ public class ClienteAPIRestFoursquare extends AsyncTask<Void, Void, Void> {
 
     private final String URL = "https://api.foursquare.com/v2/venues/search?";
 
+    // Buscar un super especifico id_Super:
+    // https://api.foursquare.com/v2/venues/4d5fdf2f338bb60ca22a21bd
+
+    // Buscar por categorias
+    // https://api.foursquare.com/v2/venues/search?ll=-31.653307,-60.7156267&categoryId=52f2ab2ebcbc57f1066b8b46&categoryId=4d954b0ea243a5684a65b473&categoryId=4bf58dd8d48988d1f9941735
+
     private final String CLIENT_ID = "LHE1HXFUQRZDCNN1QM02AEUVHHRBMHG3CR2LQFDOGJLUCGMC";
     private final String CLIENT_SECRET = "TDKCJCKFDSBHMP0BB4FTK3PSLQ2MGZPG5GLH21SPN3CYSZBY";
     private final String API_VERSION = "20170101";
