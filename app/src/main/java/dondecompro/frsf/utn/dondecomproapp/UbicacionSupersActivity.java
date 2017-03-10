@@ -1,6 +1,7 @@
 package dondecompro.frsf.utn.dondecomproapp;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -167,6 +168,9 @@ public class UbicacionSupersActivity extends AppCompatActivity
             this.myMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
                 @Override
                 public void onMapLongClick(LatLng latLng) {
+                    if(nuevoSupermercadoMarker != null){
+                        nuevoSupermercadoMarker.remove();
+                    }
 
                     nuevoSupermercadoMarker = myMap.addMarker(
                             new MarkerOptions()
@@ -175,23 +179,23 @@ public class UbicacionSupersActivity extends AppCompatActivity
                                 .snippet("¿Desea agregar un Super en esta Ubicacion?")
                                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_googlemaps_supers_agregar))
                     );
-
-                    myMap.setOnMarkerClickListener(
-                            new GoogleMap.OnMarkerClickListener(){
-                                @Override
-                                public boolean onMarkerClick(Marker marker) {
-                                    if (marker.equals(nuevoSupermercadoMarker)){
-                                        Intent myIntent = new Intent(UbicacionSupersActivity.this, SugerenciaSuperActivity.class);
-                                        myIntent.putExtra("coordenadas", nuevoSupermercadoMarker.getPosition());
-                                        startActivity(myIntent);
-                                        return true;
-                                    }
-                                    return false;
-                                }
-                            }
-                    );
                 }
             });
+
+            this.myMap.setOnMarkerClickListener(
+                    new GoogleMap.OnMarkerClickListener(){
+                        @Override
+                        public boolean onMarkerClick(Marker marker) {
+                            if (marker.equals(nuevoSupermercadoMarker)){
+                                Intent myIntent = new Intent(UbicacionSupersActivity.this, SugerenciaSuperActivity.class);
+                                myIntent.putExtra("coordenadas", nuevoSupermercadoMarker.getPosition());
+                                startActivityForResult(myIntent, SugerenciaSuperActivity.REQUEST_CODE);
+                                return true;
+                            }
+                            return false;
+                        }
+                    }
+            );
         }catch (SecurityException exception){
             Toast.makeText(getApplicationContext(), "No posee permisos GPS", Toast.LENGTH_SHORT).show();
             Log.v("SecurityException", exception.getMessage());
@@ -252,20 +256,27 @@ public class UbicacionSupersActivity extends AppCompatActivity
      */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Supermercado nuevoSupermercado = (Supermercado) extras.get("result");
-            this.listaSupermercados.add(nuevoSupermercado);
+        if (requestCode == SugerenciaSuperActivity.REQUEST_CODE){
+            if (resultCode == RESULT_OK) {
+//                Bundle extras = data.getExtras();
+//                Supermercado nuevoSupermercado = (Supermercado) extras.get("result");
+//                this.listaSupermercados.add(nuevoSupermercado);
+                this.nuevoSupermercadoMarker.remove();
 
-            myMap.addMarker(
-                new MarkerOptions()
-                    .position(new LatLng(Double.valueOf(nuevoSupermercado.getLatitud()),Double.valueOf(nuevoSupermercado.getLongitud())))
-                    .title(nuevoSupermercado.getNombre())
-                    .snippet("Contacto: "+nuevoSupermercado.getDireccion()+" . "+nuevoSupermercado.getTelefono())
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_googlemaps_supers_agregar))
-            );
+//                myMap.addMarker(
+//                        new MarkerOptions()
+//                                .position(new LatLng(Double.valueOf(nuevoSupermercado.getLatitud()),Double.valueOf(nuevoSupermercado.getLongitud())))
+//                                .title(nuevoSupermercado.getNombre())
+//                                .snippet("Contacto: "+nuevoSupermercado.getDireccion()+" . "+nuevoSupermercado.getTelefono())
+//                                .icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_googlemaps_supers_agregar))
+//                );
+
+                Toast.makeText(getApplicationContext(), "Sugerencia enviada", Toast.LENGTH_SHORT).show();
+            }
+            else if (resultCode == RESULT_CANCELED){
+                Toast.makeText(getApplicationContext(), "Sugerencia cancelada", Toast.LENGTH_SHORT).show();
+            }
         }
-        nuevoSupermercadoMarker.remove();
     }
 
     /**
